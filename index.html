@@ -819,7 +819,9 @@
                 case 'cymascope_agua': desenharCymascopeAgua(freqEstimada, sens, corAtual, ctx2D); break;
                 case 'chladni_triangular': desenharChladniTriangular(freqEstimada, sens, corAtual, ctx2D); break;
                 case 'chladni_radial': desenharChladniCircularRadial(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ondas_gravitacionais': desenharOndasGravitacionais(freqEstimada, sens, corAtual, ctx2D); break;
+                case 'ondas_gravitacionais': 
+    desenharOndasGravitacionais(freqEstimada, sens, corAtual, ctx2D); 
+    break;               
                 case 'esferas_harmonicas': desenharEsferasHarmonicas(freqEstimada, sens, corAtual, ctx2D); break;
                 case 'espiral_ulam': desenharEspiralUlam(freqEstimada, sens, corAtual, ctx2D); break;
                 case 'atrator_lorenz': desenharAtratorLorenz(freqEstimada, sens, corAtual, ctx2D); break;
@@ -1540,18 +1542,45 @@ function mapRange(value, inMin, inMax, outMin, outMax) {
 }
   
 
-        function desenharCymascopeAgua(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.002;
-            c.strokeStyle = cor; c.lineWidth = 1.5;
-            for (let r = 20; r < 170; r += 12) {
-                c.beginPath();
-                for (let theta = 0; theta <= Math.PI * 2; theta += 0.04) {
-                    let raio = r + Math.sin(r * 0.08 - tempo * 3.0) * Math.cos(4 * theta + tempo) * 8.0;
-                    theta === 0 ? c.moveTo(Math.cos(theta) * raio, Math.sin(theta) * raio) : c.lineTo(Math.cos(theta) * raio, Math.sin(theta) * raio);
-                }
-                c.stroke();
+     function desenharCymascopeAgua(freq, sens, cor, c) {
+    let tempo = Date.now() * 0.002;
+    
+    c.save();
+    // Centraliza automaticamente no meio do canvas para o desenho aparecer na tela
+    c.translate(c.canvas.width / 25, c.canvas.height / 25);
+    
+    c.strokeStyle = cor; 
+    c.lineWidth = 1.5;
+
+    // Adapta o número de ondulações/pétalas geometricamente com base na frequência recebida
+    let numeroDeOndas = Math.floor(freq / 100) + 3;
+    // Garante um valor padrão caso a sensibilidade venha indefinida
+    let fatorSens = sens !== undefined ? sens : 1.0;
+
+    for (let r = 20; r < 170; r += 12) {
+        c.beginPath();
+        let primeiroPonto = true; // Substitui o theta === 0 para evitar falhas de arredondamento
+
+        for (let theta = 0; theta <= Math.PI * 2; theta += 0.04) {
+            // Calcula o raio aplicando a frequência, o tempo e a sensibilidade
+            let raio = r + Math.sin(r * 0.08 - tempo * 3.0) * Math.cos(numeroDeOndas * theta + tempo) * 8.0 * fatorSens;
+            let x = Math.cos(theta) * raio;
+            let y = Math.sin(theta) * raio;
+
+            if (primeiroPonto) {
+                c.moveTo(x, y);
+                primeiroPonto = false;
+            } else {
+                c.lineTo(x, y);
             }
         }
+        c.closePath(); // Fecha o ciclo do padrão perfeitamente
+        c.stroke();
+    }
+    
+    c.restore(); // Restaura o contexto original do canvas
+}
+   
 
         function desenharChladniTriangular(freq, sens, cor, c) {
             c.fillStyle = cor;
@@ -1572,8 +1601,8 @@ function mapRange(value, inMin, inMax, outMin, outMax) {
     // 1. Coordenadas do centro da tela obtidas diretamente do canvas
     let width = c.canvas.width || window.innerWidth;
     let height = c.canvas.height || window.innerHeight;
-    let cx = width / 2;
-    let cy = height / 2;
+    let cx = width / 20;
+    let cy = height / 20;
 
     // 2. Inicialização interna automática das partículas (evita erros se esquecer de declarar fora)
     if (typeof window._particulasChladni === 'undefined' || !window._particulasChladni || window._particulasChladni.length === 0) {
@@ -1841,12 +1870,17 @@ function desenharChladniTriangular(freq, sens, cor, c) {
 
     c.restore();
 }
-
-// Correção da função Chladni Quadrada para chamar a sua devida implementação isolada
-function desenharChladniQuadrada(freq, sens, cor, c) {
-    // Mantém a estrutura limpa e independente
-    desenharChladniTriangular(freq, sens, cor, c); // Ou implemente a lógica quadrada própria se preferir
-}
+function desenharOndasGravitacionais(freq, sens, cor, c) {
+            let tempo = Date.now() * 0.002;
+            c.strokeStyle = cor;
+            c.lineWidth = 1.0;
+            for (let r = 20; r < 180; r += 20) {
+                let deformacao = Math.sin(r * 0.1 - tempo * 4) * 6 * sens;
+                c.beginPath();
+                c.arc(0, 0, r + deformacao, 0, Math.PI * 2);
+                c.stroke();
+            }
+        }
 
 
 function desenharChladniAreia(freq, sens, cor, c) {
@@ -1913,65 +1947,7 @@ function desenharChladniAreia(freq, sens, cor, c) {
         // Defina esta variável fora das funções para manter o controle contínuo:
 let anguloGlobal = 0; 
 
-function desenharOndasAgua(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    // Incrementa o ângulo global para movimentar as ondas continuamente
-    anguloGlobal += 0.015;
-
-    let tempo = Date.now() * 0.001;
-    // Captura reatividade sonora do array de áudio com fallback seguro
-    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[6] || 30) : 30) * sens * 0.2;
-
-    let numOndas = 5; // Quantidade de anéis de ondas propagando
-    let raioBase = 25;
-
-    for (let i = 0; i < numOndas; i++) {
-        c.save();
-        
-        // Cada anel de onda gira levemente em direções e velocidades próprias
-        c.rotate(anguloGlobal * (0.4 + i * 0.15) * (i % 2 === 0 ? 1 : -1));
-
-        c.beginPath();
-        let pontos = 120;
-
-        for (let j = 0; j <= pontos; j++) {
-            let theta = (j / pontos) * Math.PI * 2;
-            
-            // Efeito de deformação de onda de água usando seno modulado pelo tempo e som
-            let deformacaoOnda = Math.sin(theta * 8 + tempo * 4 - i) * (3 + audioMod * 0.4);
-            let raio = raioBase + (i * 22) + deformacaoOnda + (audioMod * 0.6);
-
-            let x = raio * Math.cos(theta);
-            let y = raio * Math.sin(theta);
-
-            if (j === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-
-        c.closePath();
-        c.lineWidth = 1.3;
-        // Gradiente de transparência: ondas mais externas ficam mais suaves
-        c.globalAlpha = Math.max(0.1, 0.9 - (i * 0.15)); 
-        c.stroke();
-        c.restore();
-    }
-
-    // Núcleo central pulsante (o ponto de impacto da gota d'água)
-    c.beginPath();
-    c.arc(0, 0, 2.5 + (audioMod * 0.3), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.95;
-    c.fill();
-
-    c.restore();
-}
-
+p
 function desenharRosetas(freq, sens, cor, c) {
     let numLados = 6;
     
@@ -2137,7 +2113,36 @@ function desenharRosetas(freq, sens, cor, c) {
 
     c.restore();
 }
+function desenharOndasAgua(freq, sens, cor, c) {
+    c.save();
+    c.lineWidth = 1.5;
 
+    let tempo = Date.now() * 0.002;
+    // Captura dados do áudio de forma segura para dar movimento dinâmico às ondas
+    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[10] || 30) : 30) * sens * 0.3;
+
+    let numOndas = 12;
+    let raioMax = 250;
+
+    // Desenha as ondas concêntricas expandindo a partir do centro (0,0)
+    for (let i = 1; i <= numOndas; i++) {
+        let raio = ((tempo * 50 + i * 20) % raioMax) + (audioMod * 1.5);
+        let opacidade = Math.max(0, 1.0 - (raio / raioMax));
+        
+        c.beginPath();
+        // Utiliza coordenadas relativas ao centro correto (removido o erro de divisão por 25)
+        c.arc(0, 0, raio, 0, Math.PI * 2);
+        
+        // Define a cor com esmaecimento progressivo conforme a onda se expande
+        if (typeof chkCores !== 'undefined' && chkCores.checked) {
+            c.strokeStyle = cor;
+        } else {
+            c.strokeStyle = `rgba(56, 189, 248, ${opacidade * 0.7})`;
+        }
+        c.stroke();
+    }
+    c.restore();
+}
         function desenharRedesHexagonais(freq, sens, cor, c) { desenharRosetas(freq, sens, cor, c); }
         function desenharCurvasRosa(freq, sens, cor, c) {
     c.save();
