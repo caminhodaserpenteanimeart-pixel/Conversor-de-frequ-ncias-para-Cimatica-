@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratório de Cimática - Quantum Edition (55 Ressonâncias)</title>
+    <title>Laboratório de Cimática 3D - Reativo à Frequência</title>
     <style>
         :root {
             --bg-deep: #020205;
             --panel-bg: rgba(15, 23, 42, 0.65);
             --border-glow: rgba(56, 189, 248, 0.25);
             --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -46,10 +45,9 @@
             padding: 8px 12px;
             background: var(--panel-bg);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-glow);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         #btn-iniciar, select, button.acao {
@@ -63,20 +61,16 @@
             cursor: pointer;
             outline: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         #btn-iniciar:hover, button.acao:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.15));
             border-color: var(--accent);
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-            transform: translateY(-1px);
         }
 
         select {
             display: none;
             background-color: #0b0f19 !important;
-            color: var(--text-main);
         }
 
         .controles-extras {
@@ -86,35 +80,12 @@
             z-index: 20;
             background: var(--panel-bg);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             padding: 12px 18px;
             border-radius: 16px;
             border: 1px solid var(--border-glow);
             font-size: 12px;
             gap: 16px;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .controles-extras label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        input[type="checkbox"] {
-            accent-color: var(--accent);
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
-
-        input[type="range"] {
-            accent-color: var(--accent);
-            cursor: pointer;
         }
 
         #painel-info {
@@ -124,7 +95,6 @@
             display: none;
             background: var(--panel-bg);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             padding: 10px 20px;
             border-radius: 14px;
             border: 1px solid var(--border-glow);
@@ -132,171 +102,82 @@
             font-size: 13px;
             letter-spacing: 1.5px;
             color: var(--text-muted);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         #txtFreq {
             color: var(--accent);
             font-weight: 700;
             font-size: 15px;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
     </style>
 </head>
 <body>
 
     <div id="painel-controle">
-        <button id="btn-iniciar">Ativar Ressonância</button>
+        <button id="btn-iniciar">Ativar Ressonância Dinâmica</button>
         <select id="seletorPadrao">
-            <option value="ressonancia_01">🍩 01 Nós de ondas Estacionarias</option>
-            <option value="ressonancia_pulso_taquionico">⚡ 02 Ressonância de Pulso Taquiônico (Descargas Ultrarrápidas & Rastros Luminescentes)</option>
-
-            <!-- OPÇÕES ANTERIORES -->
-            <option value="ecosfera_biomecanica">🫀03 Ecosfera Biomecânica (Padrão Orgânico-Sintético & Batimentos Bio-Cibernéticos)</option>
-            <option value="vibracao_magnetohidrodinamica">🧲 04 Vibração Magnetohidrodinâmica (Interação Turbulenta Campo-Fluido)</option>
-            
-            <option value="campo_gravitacional_torsao">🌌 05 Campo Gravitacional de Torsão (Ondas Espirais & Distorção Espacial)</option>
-            <option value="oscilacao_cristalina_prateada">❄️ 06 Oscilação Cristalina Prateada (Geometria Fractal Rígida & Reflexos Frios)</option>
-            <option value="harmonica_vazio_quantico">🌌 07 Harmônica do Vazio Quântico (Flutuação de Vácuo & Caos Controlado)</option>
-            <option value="ressonancia_plasma_estelar">⚡08 Ressonância de Plasma Estelar (Correntes Iônicas & Brilho Intenso)</option>
-
-            <option value="esfera_ressonante">🌐09 Esfera Ressonante (Globo Cimático & Mapeamento Esférico)</option>
-            <option value="chladni_hexagonal">🛑10 Placa Hexagonal de Chladni (Simetria de Colmeia)</option>
-            <option value="vortices_acusticos">🌀11 Vórtices Acústicos (Cimática Espiral & Dinâmica de Fluidos)</option>
-            <option value="rede_cristais_3d">💎12 Rede de Cristais Sonorizados (Matriz 3D & Compactação Atômica)</option>
-            <option value="efeito_faraday">💧13 Efeito Faraday em Gotas de Fluido (Instabilidade Hidrodinâmica)</option>
-            <option value="wave_pendulum">🌊14 Cadeia de Pêndulos Acoplados (Wave Pendulum)</option>
-            <option value="tubo_rubens">🔥15 Tubo de Rubens Virtual (Ondas Estacionárias)</option>
-            <option value="cymascope_agua">💧16 Cymascope de Água (Membrana Líquida & Hidrodinâmica)</option>
-            
-            <option value="chladni_triangular">🔺17 Placa Triangular de Chladni (Geometria Irregular)</option>
-            <option value="chladni_radial">🔵18 Placa de Chladni Circular (Modo Radial)</option>
-            <option value="ondas_gravitacionais">🌌21 Ondas Gravitacionais Sonoras (Anéis de Einstein)</option>
-            <option value="esferas_harmonicas">🌐22 Esferas Harmônicas (Harmônicos Esféricos 3D)</option>
-            <option value="espiral_ulam">🔢23 Espirais de Ulam / Números Primos Sonoros</option>
-            <option value="atrator_lorenz">🌪️24 Atratores Caóticos (Lorenz & Clifford)</option>
-            <option value="tubo_kundt">🧪25 Ondas Estacionárias (Tubo de Kundt)</option>
-            <option value="chladni_quadrada">🔲26 Placa Quadrada (Chladni 2D)</option>
-            <option value="chladni_areia">✨27 Placa de Chladni (Areia)</option>
-            <option value="ondas_agua">🌊28 Ondas Concêntricas (Água)</option>
-            <option value="rosetas">✨29 Rosetas Dinâmicas</option>
-            <option value="hexagrama">🔯30 Hexagrama / Estrela (6 Pontas)</option>
-            <option value="matricial">🔲31 Malha Matricial (Chladni)</option>
-            <option value="espiral">🌀32 Espiral / Fractal</option>
-            <option value="lissajous">♾️33 Figuras de Lissajous</option>
-            <option value="redes_hexagonais">🛑34 Redes Hexagonais (Cimática)</option>
-            <option value="curvas_rosa">🌹35 Curvas de Rosa (Grandi)</option>
-            <option value="espiral_aurea">🐚36 Espiral Áurea / Logarítmica</option>
-            <option value="moire">👁️37 Padrões de Moiré</option>
-            <option value="lissajous_3d">🧊38 Projeção Isométrica 3D (Lissajous)</option>
-            <option value="julia">🔮39 Fractais (Conjunto de Julia)</option>
-            <option value="bessel">🌊40 Modos Nodais de Bessel (Chladni Circular)</option>
-
-            <option value="cymatic_bloom">🌸41 Flor de Lótus Cimática (Simetria Sagrada)</option>
-            <option value="quantum_vortex">⚛️42 Vortex Quântico de Partículas</option>
-            <option value="dna_helix">🧬43 Dupla Hélice de DNA Sonora</option>
-            <option value="cymatic_plasma">⚡44 Plasma Eletromagnético Sonoro</option>
-            <option value="mandala_sacred">🕉️45 Mandala Geometria Sagrada de Metatron</option>
-            <option value="stellar_pulsar">💫46 Pulsação Estelar e Campo Magnético</option>
-            <option value="crystal_lattice">💎47 Rede Cristalina Piezoelétrica</option>
-            <option value="harmonic_web">🕸️48 Teia Harmônica de Nodos Modais</option>
-            <option value="bioluminescence">🌿49 Bioluminescência Celular Reativa</option>
-            <option value="superstring_brane">🎻50 Brana de Supercordas Multidimensionais</option>
-
-            <option value="ressonancia_35">🎶 51 Placa Circular de Chladni Avançada (Bessel)</option>
-            <option value="ressonancia_36">🧊 52 Armadilhas Acústicas (Redes Bravais 3D)</option>
-            <option value="ressonancia_37">🍩 53 Nós Toroidais (Torus Dinâmico)</option>
-            <option value="ressonancia_38">🔥 54 Estrelas e Polígonos de Rubens Sonoros</option>
-            <option value="ressonancia_39">✨ 55 Células de Voronoi Orgânicas Reativas</option>
-            <option value="ressonancia_40">🌀 56 Padrões de Moiré Acústico Avançado</option>
-            <option value="ressonancia_41">🪷 57 Pétalas de Lótus / Tigelas Tibetanas</option>
-            <option value="ressonancia_42">🔺 58 Chladni Triangular e Hexagonal</option>
-            <option value="ressonancia_43">🧬 59 Espirais Harmônicas de Melde</option>
-            <option value="ressonancia_44">🌐 60 Franjas Esféricas (Esfera Oca)</option>
+            <option value="ecosfera_biomecanica" selected >🫀 01. Ecosfera Biomecânica</option>
+            <option value="vibracao_magnetohidrodinamica">🧲 02. Vibração Magnetohidrodinâmica</option>
+            <option value="campo_gravitacional_torsao">🌌 03. Campo Gravitacional de Torsão</option>
+            <option value="oscilacao_cristalina_prateada">❄️ 04. Oscilação Cristalina Prateada</option>
+            <option value="harmonica_vazio_quantico">🌌 05. Harmônica do Vazio Quântico</option>
+            <option value="ressonancia_plasma_estelar">⚡ 06. Ressonância de Plasma Estelar</option>
+            <option value="esfera_ressonante">🌐 07. Esfera Ressonante & Globo Cimático</option>
+            <option value="chladni_hexagonal">🛑 08. Placa Hexagonal de Chladni</option>
+            <option value="vortices_acusticos">🌀 09. Vórtices Acústicos Espirais</option>
+            <option value="rede_cristais_3d">💎 10. Rede de Cristais Sonorizados 3D</option>
+            <option value="efeito_faraday">💧 11. Efeito Faraday em Gotas de Fluido</option>
+            <option value="wave_pendulum">🌊 12. Cadeia de Pêndulos Acoplados</option>
+            <option value="tubo_rubens">🔥 13. Tubo de Rubens Virtual 3D</option>
+            <option value="cymascope_agua">💧 14. Cymascope de Água & Membrana Líquida</option>
+            <option value="chladni_triangular">🔺 15. Placa Triangular de Chladni</option>
+            <option value="chladni_radial">🔵 16. Placa Circular de Chladni (Radial)</option>
+            <option value="ondas_gravitacionais">🌌 17. Ondas Gravitacionais & Anéis de Einstein</option>
+            <option value="esferas_harmonicas">🌐 18. Esferas Harmônicas 3D</option>
+            <option value="espiral_ulam">🔢 19. Espirais de Ulam & Primos Sonoros</option>
+            <option value="atrator_lorenz">🌪️ 20. Atratores Caóticos (Lorenz & Clifford)</option>
+            <option value="tubo_kundt">🧪 21. Tubo de Kundt (Ondas Estacionárias)</option>
+            <option value="chladni_quadrada">🔲 22. Placa Quadrada 2D</option>
+            <option value="ondas_agua">🌊 23. Ondas Concêntricas de Água</option>
+            <option value="rosetas">✨ 24. Rosetas Dinâmicas Psicodélicas</option>
+            <option value="hexagrama">🔯 25. Hexagrama / Estrela de 6 Pontas</option>
+            <option value="matricial">🔲 26. Malha Matricial Cimática</option>
+            <option value="espiral">🌀 27. Espiral Fractal</option>
+            <option value="lissajous">♾️ 28. Figuras de Lissajous</option>
+            <option value="redes_hexagonais">🛑 29. Redes Hexagonais de Rosetas</option>
+            <option value="curvas_rosa">🌹 30. Curvas de Rosa de Grandi</option>
+            <option value="espiral_aurea">🐚 31. Espiral Áurea / Logarítmica</option>
+            <option value="moire">👁️ 32. Padrões de Moiré Acústico</option>
+            <option value="lissajous_3d">🧊 33. Projeção Isométrica 3D (Lissajous)</option>
+            <option value="julia">🔮 34. Fractais (Conjunto de Julia)</option>
+            <option value="bessel">🌊 35. Modos Nodais de Bessel</option>
+            <option value="cymatic_bloom">🌸 36. Flor de Lótus Cimática</option>
+            <option value="quantum_vortex">⚛️ 37. Vortex Quântico de Partículas</option>
+            <option value="dna_helix">🧬 38. Dupla Hélice de DNA Sonora</option>
+            <option value="cymatic_plasma">⚡ 39. Plasma Eletromagnético Sonoro</option>
+            <option value="mandala_sacred">🕉️ 40. Mandala de Metatron</option>
+            <option value="stellar_pulsar">💫 41. Pulsação Estelar e Campo Magnético</option>
+            <option value="crystal_lattice">💎 42. Rede Cristalina Piezoelétrica</option>
+            <option value="harmonic_web">🕸️ 43. Teia Harmônica de Nodos Modais</option>
+            <option value="bioluminescence">🌿 44. Bioluminescência Celular Reativa</option>
+            <option value="superstring_brane">🎻 45. Brana de Supercordas Multidimensionais</option>
+            <option value="ressonancia_37">🍩 46. Nós Toroidais (Torus Dinâmico 3D)</option>
+            <option value="ressonancia_38">🔥 47. Estrelas e Polígonos de Rubens Sonoros</option>
+            <option value="ressonancia_39">✨ 48. Células de Voronoi Orgânicas</option>
         </select>
         <button id="btn-salvar" class="acao" style="display:none;">📸 Salvar Mandala</button>
     </div>
 
-    <div id="controles-extras" class="controles-extras">
-        <label><input type="checkbox" id="chkCores" checked> Cores Dinâmicas</label>
-        <label>Sensibilidade: <input type="range" id="sliderSensibilidade" min="0.2" max="2.0" step="0.1" value="1.0" style="width: 90px;"></label>
+    <div id="controles-extras" class="controles-extras" style="display:none;">
+        <label><input type="checkbox" id="chkCores" checked> Cores Dinâmicas por Frequência</label>
+        <label>Sensibilidade: <input type="range" id="sliderSensibilidade" min="0.2" max="3.0" step="0.1" value="1.2" style="width: 90px;"></label>
     </div>
 
-    <div id="painel-info">
+    <div id="painel-info" style="display:none;">
         FREQUÊNCIA: <span id="txtFreq">0</span> Hz
     </div>
 
     <canvas id="canvasVisual"></canvas>
-
-    <script id="vs-ray" type="x-shader/x-vertex">
-        attribute vec2 a_position;
-        void main() {
-            gl_Position = vec4(a_position, 0.0, 1.0);
-        }
-    </script>
-
-    <script id="fs-ray" type="x-shader/x-fragment">
-        precision highp float;
-        uniform vec2 u_resolution;
-        uniform float u_time;
-        uniform float u_audioData;
-        uniform int u_coresAtivas;
-
-        float sdTorus(vec3 p, vec2 t, float audioEffect) {
-            vec3 q = p;
-            q.xy *= mat2(cos(u_time * 0.5), -sin(u_time * 0.5), sin(u_time * 0.5), cos(u_time * 0.5));
-            vec2 h = vec2(t.x + audioEffect * 0.4, t.y);
-            vec2 c = vec2(length(q.xz) - h.x, q.y);
-            return length(c) - h.y;
-        }
-
-        float map(vec3 p, float audio) {
-            return sdTorus(p, vec2(1.2, 0.35), audio);
-        }
-
-        vec3 calcNormal(vec3 p, float audio) {
-            float e = 0.001;
-            vec2 h = vec2(1.0, -1.0)*0.5773;
-            return normalize( h.xyy * map( p + h.xyy*e, audio ) + 
-                              h.yyx * map( p + h.yyx*e, audio ) + 
-                              h.yxy * map( p + h.yxy*e, audio ) + 
-                              h.xxx * map( p + h.xxx*e, audio ) );
-        }
-
-        void main() {
-            vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
-            vec3 ro = vec3(0.0, 0.0, -3.0);
-            vec3 rd = normalize(vec3(uv, 1.0));
-
-            float t = 0.0;
-            float d = 0.0;
-            vec3 p = ro;
-            float audioVal = u_audioData;
-
-            for(int i = 0; i < 48; i++) {
-                p = ro + rd * t;
-                d = map(p, audioVal);
-                if(d < 0.001 || t > 20.0) break;
-                t += d;
-            }
-
-            vec3 color = vec3(0.02, 0.02, 0.05);
-
-            if(d < 0.001) {
-                vec3 normal = calcNormal(p, audioVal);
-                vec3 lightDir = normalize(vec3(1.0, 2.0, -2.0));
-                float diff = max(dot(normal, lightDir), 0.0);
-                
-                vec3 baseColor = u_coresAtivas == 1 
-                    ? (0.5 + 0.5 * cos(u_time + p.xyz + vec3(0.0, 2.0, 4.0)))
-                    : vec3(0.22, 0.74, 0.97);
-
-                color = baseColor * (diff + 0.25) + (audioVal * 0.35);
-            }
-
-            gl_FragColor = vec4(color, 1.0);
-        }
-    </script>
 
     <script>
         const btn = document.getElementById('btn-iniciar');
@@ -306,393 +187,27 @@
         const painel = document.getElementById('painel-info');
         const txtFreq = document.getElementById('txtFreq');
         const canvas = document.getElementById('canvasVisual');
-        
-        let ctx2D = null;
-        let gl = null;
-        let shaderProgram = null;
-        let uResolutionLoc, uTimeLoc, uAudioLoc, uCoresLoc;
-        let audioCtx, analyser, microphone, dataArray;
-
         const chkCores = document.getElementById('chkCores');
         const sliderSensibilidade = document.getElementById('sliderSensibilidade');
 
-        const gridCellW = 140;
-        const gridCellH = 100;
-        let gridCelulas = [];
-        let proximoCelulas = [];
-        let canvasAC = document.createElement('canvas');
-        let ctxAC = canvasAC.getContext('2d');
-        canvasAC.width = gridCellW;
-        canvasAC.height = gridCellH;
+        let ctx2D = null;
+        let audioCtx, analyser, microphone, dataArray;
+        let anguloGlobal = 0;
 
         function redimensionar() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
         }
         window.addEventListener('resize', redimensionar);
 
-        let particulasTaquionicas = []; // Array para Ressonância de Pulso Taquiônico
-        let particulasEcosfera = []; 
-        let particulasMHD = []; 
-        let particulasTorsaoGravitacional = []; 
-        let particulasOscilacaoPrateada = []; 
-        let particulasVazioQuantico = []; 
-        let particulasPlasmaEstelar = []; 
-        let particulasEsfera = []; 
-        let particulasChladni = [];
-        let particulasHexagonal = []; 
-        let particulasTriangular = [];
-        let particulasRadial = [];
-        let particulasQuadrada = [];
-        let particulasKundt = [];
-        let pontosLorenz = [];
-        let cachePrimos = [];
-        let particulasFluido = [];
-        let gotasFaraday = []; 
-        let cristais3D = []; 
-        let vorticesParticulas = [];
-        let gridA = [];
-        let gridB = [];
-        let proximoA = [];
-        let proximoB = [];
-        const gridRD_W = 160;
-        const gridRD_H = 120;
-        let canvasRD = document.createElement('canvas');
-        let ctxRD = canvasRD.getContext('2d');
-        canvasRD.width = gridRD_W;
-        canvasRD.height = gridRD_H;
-
-        function inicializarAutomatoCelular() {
-            gridCelulas = [];
-            proximoCelulas = [];
-            for (let x = 0; x < gridCellW; x++) {
-                gridCelulas[x] = [];
-                proximoCelulas[x] = [];
-                for (let y = 0; y < gridCellH; y++) {
-                    gridCelulas[x][y] = Math.random() < 0.15 ? 1 : 0;
-                    proximoCelulas[x][y] = 0;
-                }
-            }
-        }
-
-        function inicializarReacaoDifusao() {
-            gridA = [];
-            gridB = [];
-            proximoA = [];
-            proximoB = [];
-            for (let x = 0; x < gridRD_W; x++) {
-                gridA[x] = [];
-                gridB[x] = [];
-                proximoA[x] = [];
-                proximoB[x] = [];
-                for (let y = 0; y < gridRD_H; y++) {
-                    gridA[x][y] = 1.0;
-                    gridB[x][y] = 0.0;
-                    proximoA[x][y] = 1.0;
-                    proximoB[x][y] = 0.0;
-                }
-            }
-            let cx = Math.floor(gridRD_W / 2);
-            let cy = Math.floor(gridRD_H / 2);
-            for (let i = -6; i <= 6; i++) {
-                for (let j = -6; j <= 6; j++) {
-                    if (cx + i >= 0 && cx + i < gridRD_W && cy + j >= 0 && cy + j < gridRD_H) {
-                        gridB[cx + i][cy + j] = 0.8 + Math.random() * 0.2;
-                    }
-                }
-            }
-        }
-
-        function ePrimo(n) {
-            if (n < 2) return false;
-            for (let i = 2; i * i <= n; i++) {
-                if (n % i === 0) return false;
-            }
-            return true;
-        }
-
-        function inicializarPrimos() {
-            cachePrimos = [];
-            let x = 0, y = 0;
-            let dx = 0, dy = -1;
-            for (let n = 1; n <= 1200; n++) {
-                if (ePrimo(n)) cachePrimos.push({ n: n, x: x, y: y });
-                if (x === y || (x < 0 && x === -y) || (x > 0 && x === 1 - y)) {
-                    let temp = dx; dx = -dy; dy = temp;
-                }
-                x += dx; y += dy;
-            }
-        }
-
+        let particulas = [];
         function inicializarParticulas() {
-            inicializarPrimos();
-            inicializarReacaoDifusao();
-            inicializarAutomatoCelular();
-
-            // Inicialização para a Ressonância de Pulso Taquiônico
-            particulasTaquionicas = [];
-            for (let i = 0; i < 5000; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 220;
-                particulasTaquionicas.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    vx: (Math.random() - 0.5) * 6,
-                    vy: (Math.random() - 0.5) * 6,
-                    vida: Math.random() * 100 + 50,
-                    tamanho: Math.random() * 2.2 + 0.8
-                });
-            }
-
-            particulasEcosfera = [];
-            for (let i = 0; i < 4800; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 200;
-                particulasEcosfera.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    vx: (Math.random() - 0.5) * 2,
-                    vy: (Math.random() - 0.5) * 2,
-                    faseBatimento: Math.random() * Math.PI * 2,
-                    tamanho: Math.random() * 1.8 + 0.6
-                });
-            }
-
-            particulasMHD = [];
-            for (let i = 0; i < 4500; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 220;
-                particulasMHD.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    vx: (Math.random() - 0.5) * 2,
-                    vy: (Math.random() - 0.5) * 2,
-                    faseMagnetica: Math.random() * Math.PI * 2,
-                    tamanho: Math.random() * 1.8 + 0.6
-                });
-            }
-
-            particulasTorsaoGravitacional = [];
-            for (let i = 0; i < 4000; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 210;
-                particulasTorsaoGravitacional.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    anguloBase: angulo,
-                    raioBase: raio,
-                    faseTorsao: Math.random() * Math.PI * 2,
-                    tamanho: Math.random() * 1.8 + 0.6
-                });
-            }
-
-            particulasOscilacaoPrateada = [];
-            for (let i = 0; i < 3500; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 190;
-                particulasOscilacaoPrateada.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    anguloBase: angulo,
-                    raioBase: raio,
-                    faseOnda: Math.random() * Math.PI * 2,
-                    tamanho: Math.random() * 1.6 + 0.5
-                });
-            }
-
-            particulasVazioQuantico = [];
-            for (let i = 0; i < 4000; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 200;
-                particulasVazioQuantico.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    fase: Math.random() * Math.PI * 2,
-                    probabilidade: Math.random(),
-                    tamanho: Math.random() * 1.8 + 0.6
-                });
-            }
-
-            particulasPlasmaEstelar = [];
-            for (let i = 0; i < 4500; i++) {
-                let angulo = Math.random() * Math.PI * 2;
-                let raio = Math.random() * 220;
-                particulasPlasmaEstelar.push({
-                    x: Math.cos(angulo) * raio,
-                    y: Math.sin(angulo) * raio,
-                    vx: (Math.random() - 0.5) * 4,
-                    vy: (Math.random() - 0.5) * 4,
-                    velocidadeOrbita: Math.random() * 0.04 + 0.02,
-                    tamanho: Math.random() * 1.8 + 0.8
-                });
-            }
-
-            particulasEsfera = [];
-            for (let i = 0; i < 5000; i++) {
-                let theta = Math.acos(Math.random() * 2 - 1);
-                let phi = Math.random() * Math.PI * 2;
-                particulasEsfera.push({
-                    theta: theta,
-                    phi: phi,
-                    velocidadeTheta: (Math.random() - 0.5) * 0.02,
-                    velocidadePhi: (Math.random() - 0.5) * 0.02
-                });
-            }
-
-            particulasHexagonal = [];
-            for (let i = 0; i < 4500; i++) {
-                let ang = Math.random() * Math.PI * 2;
-                let rad = Math.random() * 150;
-                particulasHexagonal.push({
-                    x: Math.cos(ang) * rad,
-                    y: Math.sin(ang) * rad
-                });
-            }
-
-            vorticesParticulas = [];
-            for (let i = 0; i < 4000; i++) {
-                let r = Math.random() * 180;
-                let theta = Math.random() * Math.PI * 2;
-                vorticesParticulas.push({
-                    x: Math.cos(theta) * r,
-                    y: Math.sin(theta) * r,
-                    raio: r,
-                    angulo: theta,
-                    velocidade: Math.random() * 0.02 + 0.01,
-                    tamanho: Math.random() * 1.5 + 1.0
-                });
-            }
-
-            cristais3D = [];
-            let passosGrid = 4;
-            let espacamentoRede = 32;
-            for (let x = -passosGrid; x <= passosGrid; x++) {
-                for (let y = -passosGrid; y <= passosGrid; y++) {
-                    for (let z = -passosGrid; z <= passosGrid; z++) {
-                        cristais3D.push({
-                            ox: x * espacamentoRede,
-                            oy: y * espacamentoRede,
-                            oz: z * espacamentoRede,
-                            fase: Math.random() * Math.PI * 2,
-                            tamanho: Math.random() * 1.5 + 2.0
-                        });
-                    }
-                }
-            }
-
-            gotasFaraday = [];
-            let espacamentoHex = 28;
-            for (let row = -5; row <= 5; row++) {
-                for (let col = -5; col <= 5; col++) {
-                    let offsetX = (row % 2 !== 0) ? espacamentoHex * 0.5 : 0;
-                    let px = col * espacamentoHex + offsetX;
-                    let py = row * (espacamentoHex * 0.866);
-                    if (Math.hypot(px, py) < 160) {
-                        gotasFaraday.push({
-                            x: px,
-                            y: py,
-                            baseX: px,
-                            baseY: py,
-                            fase: Math.random() * Math.PI * 2,
-                            amplitudeSalto: Math.random() * 15 + 10,
-                            tamanhoRaio: Math.random() * 2 + 3.5
-                        });
-                    }
-                }
-            }
-
-            particulasChladni = [];
+            particulas = [];
             for (let i = 0; i < 3000; i++) {
-                particulasChladni.push({
-                    x: (Math.random() - 0.5) * 400, y: (Math.random() - 0.5) * 400,
-                    ox: (Math.random() - 0.5) * 300, oy: (Math.random() - 0.5) * 300
-                });
+                let ang = Math.random() * Math.PI * 2;
+                let rad = Math.random() * 200;
+                particulas.push({ x: Math.cos(ang) * rad, y: Math.sin(ang) * rad, z: Math.random() * 100 - 50 });
             }
-
-            particulasTriangular = [];
-            for (let i = 0; i < 4500; i++) {
-                let r1 = Math.random();
-                let r2 = Math.random();
-                if (r1 + r2 > 1) { r1 = 1 - r1; r2 = 1 - r2; }
-                let size = 160;
-                let ax = 0, ay = -size;
-                let bx = -size * 0.866, by = size * 0.5;
-                let cx = size * 0.866, cy = size * 0.5;
-                let px = ax + r1 * (bx - ax) + r2 * (cx - ax);
-                let py = ay + r1 * (by - ay) + r2 * (cy - ay);
-                particulasTriangular.push({ x: px, y: py });
-            }
-
-            particulasRadial = [];
-            for (let i = 0; i < 4500; i++) {
-                let r = Math.random() * 160;
-                let theta = Math.random() * Math.PI * 2;
-                particulasRadial.push({
-                    x: Math.cos(theta) * r,
-                    y: Math.sin(theta) * r,
-                    rOriginal: r,
-                    thetaOriginal: theta
-                });
-            }
-
-            particulasQuadrada = [];
-            for (let i = 0; i < 4000; i++) {
-                particulasQuadrada.push({ x: (Math.random() - 0.5) * 320, y: (Math.random() - 0.5) * 320, vx: 0, vy: 0 });
-            }
-
-            particulasKundt = [];
-            for (let i = 0; i < 1500; i++) {
-                particulasKundt.push({ x: (Math.random() - 0.5) * 440, y: (Math.random() - 0.5) * 24, vx: 0 });
-            }
-
-            pontosLorenz = [];
-            let lx = 0.1, ly = 1.0, lz = 1.0;
-            for (let i = 0; i < 2500; i++) pontosLorenz.push({ x: lx, y: ly, z: lz });
-
-            particulasFluido = [];
-            for (let i = 0; i < 2500; i++) {
-                particulasFluido.push({
-                    x: (Math.random() - 0.5) * 500,
-                    y: (Math.random() - 0.5) * 500,
-                    vx: 0,
-                    vy: 0,
-                    vida: Math.random() * 200 + 100
-                });
-            }
-        }
-
-        function initWebGLContext() {
-            if (gl) return;
-            gl = canvas.getContext('webgl', { preserveDrawingBuffer: true });
-            if (!gl) return;
-
-            const vsSource = document.getElementById('vs-ray').text;
-            const fsSource = document.getElementById('fs-ray').text;
-            const vs = gl.createShader(gl.VERTEX_SHADER);
-            gl.shaderSource(vs, vsSource); gl.compileShader(vs);
-
-            const fs = gl.createShader(gl.FRAGMENT_SHADER);
-            gl.shaderSource(fs, fsSource); gl.compileShader(fs);
-
-            shaderProgram = gl.createProgram();
-            gl.attachShader(shaderProgram, vs);
-            gl.attachShader(shaderProgram, fs);
-            gl.linkProgram(shaderProgram);
-
-            const posBuf = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
-
-            const posLoc = gl.getAttribLocation(shaderProgram, "a_position");
-            gl.enableVertexAttribArray(posLoc);
-            gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
-
-            uResolutionLoc = gl.getUniformLocation(shaderProgram, "u_resolution");
-            uTimeLoc = gl.getUniformLocation(shaderProgram, "u_time");
-            uAudioLoc = gl.getUniformLocation(shaderProgram, "u_audioData");
-            uCoresLoc = gl.getUniformLocation(shaderProgram, "u_coresAtivas");
-            redimensionar();
         }
 
         btn.addEventListener('click', async () => {
@@ -705,10 +220,9 @@
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-                
                 microphone = audioCtx.createMediaStreamSource(stream);
                 analyser = audioCtx.createAnalyser();
-                analyser.fftSize = 512; 
+                analyser.fftSize = 1024;
                 microphone.connect(analyser);
                 dataArray = new Uint8Array(analyser.frequencyBinCount);
 
@@ -716,17 +230,12 @@
                 desenhar();
             } catch (err) {
                 alert('Erro ao acessar o microfone: ' + err);
-                btn.style.display = 'block';
-                seletor.style.display = 'none';
-                btnSalvar.style.display = 'none';
-                painelExtras.style.display = 'none';
-                painel.style.display = 'none';
             }
         });
 
         btnSalvar.addEventListener('click', () => {
             const link = document.createElement('a');
-            link.download = `mandala-sonora-${Date.now()}.png`;
+            link.download = `mandala-cimática-3d-${Date.now()}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
         });
@@ -736,2827 +245,888 @@
             for (let i = 0; i < dataArray.length; i++) {
                 if (dataArray[i] > maxVal) { maxVal = dataArray[i]; maxIndex = i; }
             }
-            let nyquist = audioCtx.sampleRate / 2;
-            return Math.round((maxIndex * nyquist) / analyser.frequencyBinCount);
+            let freq = (maxIndex * (audioCtx.sampleRate / 2)) / analyser.frequencyBinCount;
+            let energiaMedia = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+            return { freq: Math.round(freq), energia: energiaMedia };
         }
 
         function obterCorDinamica(freq) {
             if (!chkCores.checked) return 'rgba(56, 189, 248, 0.85)';
-            let hue = mapRange(Math.min(freq, 1500), 50, 1500, 180, 280); 
-            return `hsla(${hue}, 85%, 65%, 0.85)`;
+            let hue = (freq % 700) / 700 * 360;
+            return `hsla(${hue}, 90%, 65%, 0.85)`;
         }
 
-        function mapRange(value, in_min, in_max, out_min, out_max) {
-            return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-        }
+        // --- TODAS AS FUNÇÕES MODIFICADAS PARA 3D PSICODÉLICO CLIMÁTICO POR FREQUÊNCIA ---
 
-        let startTime = Date.now();
-
-        function desenhar() {
-            requestAnimationFrame(desenhar);
-            analyser.getByteFrequencyData(dataArray);
-
-            let freqEstimada = estimarFrequenciaDominante();
-            if (freqEstimada > 20 && freqEstimada < 5000) {
-                txtFreq.textContent = freqEstimada;
-            }
-
-            let sens = Math.min(Math.max(parseFloat(sliderSensibilidade.value), 0.2), 2.0);
-            let tipoPadrao = seletor.value;
-            let corAtual = obterCorDinamica(freqEstimada);
-
-            let somaVol = 0;
-            for(let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioVolumeNorm = (somaVol / 20) / 255.0 * sens;
-
-            if (tipoPadrao === 'raymarching_sdf') {
-                initWebGLContext();
-                if (gl) {
-                    gl.useProgram(shaderProgram);
-                    gl.uniform2f(uResolutionLoc, canvas.width, canvas.height);
-                    gl.uniform1f(uTimeLoc, (Date.now() - startTime) * 0.001);
-                    gl.uniform1f(uAudioLoc, audioVolumeNorm);
-                    gl.uniform1i(uCoresLoc, chkCores.checked ? 1 : 0);
-                    gl.drawArrays(gl.TRIANGLES, 0, 6);
-                    return;
-                }
-            }
-
-            if (!ctx2D) {
-                ctx2D = canvas.getContext('2d', { preserveDrawingBuffer: true });
-            }
-            
-            if (tipoPadrao !== 'automato_celular' && tipoPadrao !== 'reacao_difusao' && tipoPadrao !== 'cymascope_agua' && tipoPadrao !== 'efeito_faraday') {
-                ctx2D.fillStyle = 'rgba(2, 2, 5, 0.22)';
-                ctx2D.fillRect(0, 0, canvas.width, canvas.height);
-            } else if (tipoPadrao === 'cymascope_agua' || tipoPadrao === 'efeito_faraday') {
-                ctx2D.fillStyle = 'rgba(2, 6, 18, 0.35)';
-                ctx2D.fillRect(0, 0, canvas.width, canvas.height);
-            }
-
-            const centroX = canvas.width / 2;
-            const centroY = canvas.height / 2;
-
-            ctx2D.save();
-            ctx2D.translate(centroX, centroY);
-
-            switch(tipoPadrao) {
-                case 'ressonancia_01': desenharRessonancia01(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_pulso_taquionico': desenharRessonanciaPulsoTaquionico(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ecosfera_biomecanica': desenharEcosferaBiomecanica(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'vibracao_magnetohidrodinamica': desenharVibracaoMagnetohidrodinamica(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'campo_gravitacional_torsao': desenharCampoGravitacionalTorsao(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'oscilacao_cristalina_prateada': desenharOscilacaoCristalinaPrateada(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'harmonica_vazio_quantico': desenharHarmonicaVazioQuantico(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_plasma_estelar': desenharRessonanciaPlasmaEstelar(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'esfera_ressonante': desenharEsferaRessonante(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'chladni_hexagonal': desenharChladniHexagonal(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'vortices_acusticos': desenharVorticesAcusticos(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'rede_cristais_3d': desenharRedeCristais3D(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'efeito_faraday': desenharEfeitoFaraday(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'wave_pendulum': desenharWavePendulum(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'tubo_rubens': desenharTuboRubens(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'cymascope_agua': desenharCymascopeAgua(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'chladni_triangular': desenharChladniTriangular(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'chladni_radial': desenharChladniCircularRadial(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ondas_gravitacionais': 
-    desenharOndasGravitacionais(freqEstimada, sens, corAtual, ctx2D); 
-    break;               
-                case 'esferas_harmonicas': desenharEsferasHarmonicas(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'espiral_ulam': desenharEspiralUlam(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'atrator_lorenz': desenharAtratorLorenz(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'tubo_kundt': desenharTuboKundt(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'chladni_quadrada': desenharChladniQuadrada(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'chladni_areia': desenharChladniAreia(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ondas_agua': desenharOndasAgua(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'rosetas': desenharRosetas(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'hexagrama': desenharHexagrama(sens, corAtual, ctx2D); break;
-                case 'matricial': desenharMatricial(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'espiral': desenharEspiral(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'lissajous': desenharLissajous(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'redes_hexagonais': desenharRedesHexagonais(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'curvas_rosa': desenharCurvasRosa(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'espiral_aurea': desenharEspiralAurea(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'moire': desenharMoire(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'lissajous_3d': desenharLissajous3D(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'julia': desenharJulia(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'bessel': desenharBessel(freqEstimada, sens, corAtual, ctx2D); break;
-
-                case 'cymatic_bloom': desenharCymaticBloom(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'quantum_vortex': desenharQuantumVortex(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'dna_helix': desenharDnaHelix(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'cymatic_plasma': desenharCymaticPlasma(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'mandala_sacred': desenharMandalaSacred(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'stellar_pulsar': desenharStellarPulsar(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'crystal_lattice': desenharCrystalLattice(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'harmonic_web': desenharHarmonicWeb(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'bioluminescence': desenharBioluminescence(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'superstring_brane': desenharSuperstringBrane(freqEstimada, sens, corAtual, ctx2D); break;
-
-                case 'ressonancia_35': desenharRessonancia35(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_36': desenharRessonancia36(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_37': desenharRessonancia37(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_38': desenharRessonancia38(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_39': desenharRessonancia39(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_40': desenharRessonancia40(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_41': desenharRessonancia41(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_42': desenharRessonancia42(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_43': desenharRessonancia43(freqEstimada, sens, corAtual, ctx2D); break;
-                case 'ressonancia_44': desenharRessonancia44(freqEstimada, sens, corAtual, ctx2D); break;
-            }
-
-            ctx2D.restore();
-        }
-function desenharRessonancia01(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-    c.lineWidth = 1.0;
-
-    let tempo = Date.now() * 0.0015;
-    let audioMod = (dataArray[12] || 12) * sens * 0.14;
-    let numLadosPoligono = 6; // Estrutura hexagonal baseada em cristais acústicos
-    let raioMax = 110;
-
-    // 1. Núcleo Cristalino Pulsante
-    let raioNucleo = 12 + Math.sin(tempo * 3.5) * 4 + (audioMod * 0.5);
-    c.beginPath();
-    c.arc(0, 0, Math.max(3, raioNucleo), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.5;
-    c.fill();
-    c.globalAlpha = 1.0;
-    c.stroke();
-
-    // 2. Geometria de Interferência Holográfica (Múltiplas Camadas Poligonais Concêntricas Interconectadas)
-    let camadas = 5;
-    for (let k = 1; k <= camadas; k++) {
-        let raioCamada = (raioMax / camadas) * k + Math.sin(tempo + k) * (audioMod * 0.8);
-        
-        c.beginPath();
-        let pontos = numLadosPoligono * 4;
-        for (let i = 0; i <= pontos; i++) {
-            let angulo = (i / pontos) * Math.PI * 2;
-            
-            // Modulação de onda complexa simulando interferência nodal
-            let deformacaoOnda = Math.sin(angulo * numLadosPoligono - tempo * k) * (8 + (freq * 0.0015));
-            let pulsoAudio = Math.cos(angulo * 2 + tempo) * audioMod;
-            
-            let raioAtual = Math.max(10, raioCamada + deformacaoOnda + pulsoAudio);
-            let x = raioAtual * Math.cos(angulo);
-            let y = raioAtual * Math.sin(angulo);
-
-            if (i === 0) c.moveTo(x, y);
-            else c.lineTo(x, y);
-        }
-        c.closePath();
-        c.strokeStyle = k % 2 === 0 ? cor : 'rgba(56, 189, 248, 0.4)';
-        c.lineWidth = k === camadas ? 1.4 : 0.8;
-        c.stroke();
-    }
-
-    // 3. Eixos de Difração / Linhas de Força Radial
-    let numEixos = 8;
-    for (let i = 0; i < numEixos; i++) {
-        let angulo = (i / numEixos) * Math.PI * 2 + (tempo * 0.1);
-        let xInicio = Math.cos(angulo) * raioNucleo;
-        let yInicio = Math.sin(angulo) * raioNucleo;
-        let xFim = Math.cos(angulo) * (raioMax + audioMod * 2);
-        let yFim = Math.sin(angulo) * (raioMax + audioMod * 2);
-
-        c.beginPath();
-        c.moveTo(xInicio, yInicio);
-        c.lineTo(xFim, yFim);
-        c.strokeStyle = 'rgba(56, 189, 248, 0.3)';
-        c.lineWidth = 0.8;
-        c.stroke();
-
-        // Partículas nos vértices de difração
-        c.beginPath();
-        c.arc(xFim, yFim, 2, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        // --- ADIÇÃO: Ressonância de Pulso Taquiônico ---
-        function desenharRessonanciaPulsoTaquionico(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.003;
-            let somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 15.0;
-
-            // Anéis de pulso de alta velocidade expansivos
-            c.lineWidth = 1.5;
-            let numAnéis = 4;
-            for (let i = 1; i <= numAnéis; i++) {
-                let raioPulso = ((tempo * 60 * i * sens) % 220) + audioMod * 5;
-                let opacidade = Math.max(0, 1.0 - (raioPulso / 220));
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', (opacidade * 0.4).toString()) : `rgba(56, 189, 248, ${opacidade * 0.4})`;
-                c.beginPath();
-                c.arc(0, 0, raioPulso, 0, Math.PI * 2);
-                c.stroke();
-            }
-
-            // Descargas energéticas ultrarrápidas formando rastros luminescentes
-            c.fillStyle = cor;
-            for (let p of particulasTaquionicas) {
-                let velocidadeFator = (2.0 + audioMod * 2.0) * (freq > 0 ? freq * 0.0003 : 1.0);
-                p.x += p.vx * velocidadeFator;
-                p.y += p.vy * velocidadeFator;
-                p.vida--;
-
-                let distanciaAtual = Math.hypot(p.x, p.y);
-                if (distanciaAtual > 230 || p.vida <= 0) {
-                    let anguloReset = Math.random() * Math.PI * 2;
-                    let raioReset = Math.random() * 40;
-                    p.x = Math.cos(anguloReset) * raioReset;
-                    p.y = Math.sin(anguloReset) * raioReset;
-                    p.vx = (Math.random() - 0.5) * 8;
-                    p.vy = (Math.random() - 0.5) * 8;
-                    p.vida = Math.random() * 80 + 30;
-                }
-
-                c.shadowBlur = 8;
-                c.shadowColor = cor;
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.3), p.tamanho * (1.0 + audioMod * 0.3));
-                c.shadowBlur = 0;
-            }
-
-            // Núcleo central de descarga taquiônica
-            c.beginPath();
-            c.arc(0, 0, 10 + audioMod * 8, 0, Math.PI * 2);
-            c.fillStyle = '#ffffff';
-            c.shadowBlur = 25;
-            c.shadowColor = cor;
-            c.fill();
-            c.shadowBlur = 0;
-        }
-        // ----------------------------------------------------
-
-        // --- DEMAIS FUNÇÕES DE RENDERIZAÇÃO ---
-        function desenharEcosferaBiomecanica(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.0025;
-            let somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 14.0;
-            let batimentoCardiaco = Math.abs(Math.sin(tempo * 3.5)) * (10.0 + audioMod * 12.0);
-
-            c.lineWidth = 1.3;
-            let numCamadas = 5;
-            for (let l = 1; l <= numCamadas; l++) {
-                let raioCamada = l * 35 * sens + batimentoCardiaco * (l * 0.25);
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', (0.28 / l).toString()) : `rgba(56, 189, 248, ${0.28 / l})`;
-                c.beginPath();
-                c.arc(0, 0, raioCamada, 0, Math.PI * 2);
-                c.stroke();
-            }
-
-            let numFilamentos = 8;
-            for (let f = 0; f < numFilamentos; f++) {
+        function desenharEcosferaBiomecanica(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            for (let i = 1; i <= 6; i++) {
                 c.save();
-                c.rotate(f * ((Math.PI * 2) / numFilamentos) + tempo * 0.15);
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', '0.18') : 'rgba(56, 189, 248, 0.18)';
+                c.rotate(tempo * (i % 2 === 0 ? 0.8 : -0.8) + (freq * 0.0005));
+                c.scale(1 + Math.sin(tempo + i) * 0.2, 1 + Math.cos(tempo * i) * 0.2);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 45) % 700) / 700 * 360}, 95%, 60%, 0.85)` : cor;
+                c.lineWidth = 1.6;
                 c.beginPath();
-                for (let r = 15; r <= 180; r += 10) {
-                    let ondaSintetica = Math.sin(r * 0.06 - tempo * 4.0) * (6.0 + audioMod * 5.0);
-                    let px = r, py = ondaSintetica;
-                    r === 15 ? c.moveTo(px, py) : c.lineTo(px, py);
+                let raio = i * 25 + (energia * 0.4 * sens);
+                for (let a = 0; a <= 120; a++) {
+                    let ang = (a / 120) * Math.PI * 2;
+                    let freqMod = dataArray ? (dataArray[a % dataArray.length] || 0) * 0.2 * sens : 0;
+                    let r = raio + Math.sin(ang * (8 + (freq % 5)) + tempo * 4) * (15 + freqMod);
+                    let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                    a === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+                }
+                c.closePath(); c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharVibracaoMagnetohidrodinamica(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 50; i++) {
+                let ang = (i / 50) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.4 * sens : 0);
+                let r1 = 30 + audioMod, r2 = 130 + (energia * 0.5 * sens) + audioMod;
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 14) % 700) / 700 * 360}, 100%, 65%, 0.8)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath();
+                c.moveTo(Math.cos(ang) * r1, Math.sin(ang) * r1);
+                c.lineTo(Math.cos(ang + tempo * 2) * r2, Math.sin(ang + tempo * 2) * r2);
+                c.stroke();
+            }
+            c.restore();
+        }
+
+        function desenharCampoGravitacionalTorsao(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.6);
+            c.lineWidth = 1.5;
+            for (let k = 0; k < 3; k++) {
+                c.save();
+                c.rotate(k * Math.PI / 3);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + k * 100) % 700) / 700 * 360}, 90%, 60%, 0.85)` : cor;
+                c.beginPath();
+                for (let t = 0; t < Math.PI * 10; t += 0.04) {
+                    let r = t * 8 + (energia * 0.2 * sens) + Math.sin(t * 2 - tempo * 4) * 10;
+                    let x = r * Math.cos(t + tempo), y = r * Math.sin(t + tempo);
+                    t === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
                 }
                 c.stroke();
                 c.restore();
             }
-
-            c.fillStyle = cor;
-            for (let p of particulasEcosfera) {
-                p.faseBatimento += 0.05 + audioMod * 0.06;
-                let anguloAtual = Math.atan2(p.y, p.x), distancia = Math.hypot(p.x, p.y);
-                let pulsoOrganico = Math.sin(p.faseBatimento + tempo * 3.0) * (7.0 + audioMod * 6.0);
-                let velocidadeRotacional = (p.vx + audioMod * 0.05) * (freq > 0 ? freq * 0.00025 : 0.4);
-
-                anguloAtual += velocidadeRotacional;
-                let raioDinamico = distancia + pulsoOrganico * 0.2;
-                if (raioDinamico > 190) raioDinamico = 20;
-                if (raioDinamico < 10) raioDinamico = 160;
-
-                p.x = Math.cos(anguloAtual) * raioDinamico;
-                p.y = Math.sin(anguloAtual) * raioDinamico;
-
-                c.shadowBlur = 6; c.shadowColor = cor;
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.4), p.tamanho * (1.0 + audioMod * 0.4));
-                c.shadowBlur = 0;
-            }
-
-            c.beginPath();
-            c.arc(0, 0, 14 + batimentoCardiaco * 0.8 + audioMod * 4.0, 0, Math.PI * 2);
-            c.fillStyle = '#ffffff'; c.shadowBlur = 24; c.shadowColor = cor; c.fill(); c.shadowBlur = 0;
-        }
-
-        function desenharVibracaoMagnetohidrodinamica(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.002, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 12.0;
-
-            c.lineWidth = 1.2;
-            let numLinhas = 6;
-            for (let l = 0; l < numLinhas; l++) {
-                c.save();
-                c.rotate(l * ((Math.PI * 2) / numLinhas) + tempo * 0.2);
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', '0.2') : 'rgba(56, 189, 248, 0.2)';
-                c.beginPath();
-                for (let r = 10; r <= 190; r += 5) {
-                    let perturbacaoMHD = Math.sin(r * 0.08 - tempo * 4.0) * (8.0 + audioMod * 6.0);
-                    r === 10 ? c.moveTo(r, perturbacaoMHD) : c.lineTo(r, perturbacaoMHD);
-                }
-                c.stroke(); c.restore();
-            }
-
-            for (let i = 1; i <= 5; i++) {
-                let raioCampo = i * 40 * sens + Math.sin(tempo * 3.0 - i) * 6 * audioMod;
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', '0.14') : 'rgba(14, 165, 233, 0.14)';
-                c.beginPath(); c.arc(0, 0, raioCampo, 0, Math.PI * 2); c.stroke();
-            }
-
-            c.fillStyle = cor;
-            for (let p of particulasMHD) {
-                p.faseMagnetica += 0.06 + audioMod * 0.05;
-                let anguloAtual = Math.atan2(p.y, p.x), distancia = Math.hypot(p.x, p.y);
-                let forcaLorentz = Math.sin(p.faseMagnetica + tempo * 3.0) * (5.0 + audioMod * 4.0);
-                let rotacaoMHD = (p.vx + audioMod * 0.08) * (freq > 0 ? freq * 0.0003 : 0.5);
-
-                anguloAtual += rotacaoMHD;
-                let raioDinamico = distancia + forcaLorentz * 0.3;
-                if (raioDinamico > 210) raioDinamico = 30;
-                if (raioDinamico < 15) raioDinamico = 180;
-
-                p.x = Math.cos(anguloAtual) * raioDinamico;
-                p.y = Math.sin(anguloAtual) * raioDinamico;
-
-                c.shadowBlur = 6; c.shadowColor = cor;
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.4), p.tamanho * (1.0 + audioMod * 0.4));
-                c.shadowBlur = 0;
-            }
-
-            c.beginPath(); c.arc(0, 0, 12 + audioMod * 8, 0, Math.PI * 2);
-            c.fillStyle = '#ffffff'; c.shadowBlur = 18; c.shadowColor = cor; c.fill(); c.shadowBlur = 0;
-        }
-
-        function desenharCampoGravitacionalTorsao(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.0018, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 9.0;
-
-            c.lineWidth = 1.2;
-            for (let s = 0; s < 4; s++) {
-                c.save(); c.rotate(s * (Math.PI / 2) + tempo * 0.3);
-                c.strokeStyle = chkCores.checked ? cor.replace('0.85', '0.22') : 'rgba(56, 189, 248, 0.22)';
-                c.beginPath();
-                for (let a = 0; a < Math.PI * 4; a += 0.05) {
-                    let raioEspiral = a * 14 * sens + Math.sin(a * 2.0 - tempo * 3.0) * (6.0 + audioMod * 5.0);
-                    a === 0 ? c.moveTo(Math.cos(a) * raioEspiral, Math.sin(a) * raioEspiral) : c.lineTo(Math.cos(a) * raioEspiral, Math.sin(a) * raioEspiral);
-                }
-                c.stroke(); c.restore();
-            }
-
-            c.fillStyle = cor;
-            for (let p of particulasTorsaoGravitacional) {
-                p.faseTorsao += 0.05 + audioMod * 0.04;
-                let raioAtual = p.raioBase + Math.sin(p.faseTorsao + tempo * 3.0) * (14.0 + audioMod * 8.0);
-                let anguloDistorcido = p.anguloBase + tempo * 0.4 + (freq > 0 ? freq * 0.00015 : 0.0);
-                p.x = Math.cos(anguloDistorcido) * raioAtual;
-                p.y = Math.sin(anguloDistorcido) * raioAtual;
-                c.shadowBlur = 7; c.shadowColor = cor;
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.5), p.tamanho * (1.0 + audioMod * 0.5));
-                c.shadowBlur = 0;
-            }
-        }
-
-        function desenharOscilacaoCristalinaPrateada(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.0015, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 7.0;
-
-            c.fillStyle = cor;
-            for (let p of particulasOscilacaoPrateada) {
-                p.faseOnda += 0.04 + audioMod * 0.05;
-                let raioAtual = p.raioBase + Math.cos(p.faseOnda * 3.0) * Math.sin(tempo * 2.0) * (8.0 + audioMod * 6.0);
-                let anguloAtual = p.anguloBase + (freq > 0 ? freq * 0.0001 : 0.0) * Math.sin(tempo);
-                p.x = Math.cos(anguloAtual) * raioAtual;
-                p.y = Math.sin(anguloAtual) * raioAtual;
-                c.shadowBlur = 4; c.shadowColor = '#ffffff';
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.4), p.tamanho * (1.0 + audioMod * 0.4));
-                c.shadowBlur = 0;
-            }
-        }
-
-        function desenharHarmonicaVazioQuantico(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.002, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 8.0;
-
-            c.fillStyle = cor;
-            for (let p of particulasVazioQuantico) {
-                p.fase += 0.03 + audioMod * 0.05;
-                let prob = Math.sin(p.fase * 2.0 + tempo) * Math.cos(p.tamanho * 3.0);
-                let angulo = Math.atan2(p.y, p.x) + 0.01;
-                let raioBase = Math.hypot(p.x, p.y) + prob * 1.5;
-                p.x = Math.cos(angulo) * raioBase; p.y = Math.sin(angulo) * raioBase;
-                if (Math.abs(prob) > 0.2) {
-                    c.shadowBlur = 6; c.shadowColor = cor;
-                    c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.3), p.tamanho * (1.0 + audioMod * 0.3));
-                    c.shadowBlur = 0;
-                }
-            }
-        }
-
-        function desenharRessonanciaPlasmaEstelar(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.0025, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 6.0;
-
-            c.fillStyle = cor;
-            for (let p of particulasPlasmaEstelar) {
-                let angulo = Math.atan2(p.y, p.x) + (p.velocidadeOrbita + audioMod * 0.1) * (freq > 0 ? freq * 0.0004 : 1.0);
-                let raio = Math.hypot(p.x, p.y) + Math.sin(Math.hypot(p.x, p.y) * 0.05 - tempo * 4.0) * (3.0 + audioMod * 4.0);
-                p.x = Math.cos(angulo) * raio; p.y = Math.sin(angulo) * raio;
-                c.shadowBlur = 8; c.shadowColor = cor;
-                c.fillRect(p.x, p.y, p.tamanho * (1.0 + audioMod * 0.5), p.tamanho * (1.0 + audioMod * 0.5));
-                c.shadowBlur = 0;
-            }
-        }
-
-        function desenharEsferaRessonante(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-    c.strokeStyle = cor;
-
-    // 1. Dimensões e centralização exata no canvas
-    let width = c.canvas.width;
-    let height = c.canvas.height;
-    if (!width || width === 0) width = window.innerWidth;
-    if (!height || height === 0) height = window.innerHeight;
-
-    let cx = width / 20;
-    let cy = height / 20;
-
-    let tempo = Date.now() * 0.0008;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-    let f = (typeof freq !== 'undefined' && !isNaN(freq)) ? freq : 220;
-
-    let raioEsfera = 140 * s;
-
-    // 2. Fallback de segurança: se particulasEsfera não existir, inicializa a malha esférica
-    if (typeof particulasEsfera === 'undefined' || !Array.isArray(particulasEsfera) || particulasEsfera.length === 0) {
-        particulasEsfera = [];
-        let numParticulas = 300;
-        for (let i = 0; i < numParticulas; i++) {
-            particulasEsfera.push({
-                theta: Math.acos(Math.random() * 2 - 1),
-                phi: Math.random() * Math.PI * 2
-            });
-        }
-    }
-
-    // Mapeamento seguro de harmónicos
-    let l = Math.floor(mapRangeLocal(f, 60, 3000, 1, 7)) % 6 + 1;
-    let m = Math.floor(mapRangeLocal(f, 60, 3000, 0, l));
-
-    let rotY = tempo * 0.7;
-    let rotX = Math.sin(tempo * 0.5) * 0.4;
-
-    c.fillStyle = cor;
-
-    // 3. Renderização e Projeção 3D da Esfera
-    for (let part of particulasEsfera) {
-        let harm = Math.cos(l * part.theta) * Math.cos(m * part.phi + tempo * 2.0);
-        if (Math.abs(harm) > 0.15) { 
-            part.theta += (Math.random() - 0.5) * 0.04 * s; 
-            part.phi += (Math.random() - 0.5) * 0.04 * s; 
-        }
-
-        let x = raioEsfera * Math.sin(part.theta) * Math.cos(part.phi);
-        let y = raioEsfera * Math.cos(part.theta);
-        let z = raioEsfera * Math.sin(part.theta) * Math.sin(part.phi);
-
-        // Rotação 3D
-        let x1 = x * Math.cos(rotY) + z * Math.sin(rotY);
-        let z1 = -x * Math.sin(rotY) + z * Math.cos(rotY);
-        let y1 = y * Math.cos(rotX) - z1 * Math.sin(rotX);
-
-        let perspectiva = 450 + (y * Math.sin(rotX) + z1 * Math.cos(rotX)) + 200;
-        if (perspectiva < 10) perspectiva = 10;
-        let esc = 450 / perspectiva;
-
-        // Posição final projetada e transladada para o centro da tela (cx, cy)
-        let xProj = cx + (x1 * esc);
-        let yProj = cy + (y1 * esc);
-        let tamanhoFinal = Math.max(0.8, 1.6 * esc);
-
-        c.beginPath();
-        c.arc(xProj, yProj, tamanhoFinal, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = Math.min(1.0, Math.max(0.3, esc * 0.9));
-        c.fill();
-    }
-
-    c.restore();
-}
-
-// Função auxiliar local segura para mapeamento de valores
-function mapRangeLocal(value, inMin, inMax, outMin, outMax) {
-    let clamped = Math.max(inMin, Math.min(inMax, value));
-    return (clamped - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
-
-
-        function desenharChladniHexagonal(freq, sens, cor, c) {
-            c.fillStyle = cor;
-            let m = Math.floor(mapRange(freq, 60, 3000, 1, 6)) % 5 + 2, n = Math.floor(mapRange(freq, 60, 3000, 1, 6)) % 5 + 2;
-            for (let p of particulasHexagonal) {
-                let r = Math.hypot(p.x, p.y), theta = Math.atan2(p.y, p.x);
-                if (Math.abs(Math.sin((r / 150) * m * Math.PI) * Math.cos(3 * theta) * Math.sin(n * theta)) > 0.1) {
-                    p.x += (Math.random() - 0.5) * 4.2 * sens; p.y += (Math.random() - 0.5) * 4.2 * sens;
-                }
-                c.fillRect(p.x, p.y, 1.8, 1.8);
-            }
-        }
-
-        function desenharVorticesAcusticos(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.0015, somaVol = 0;
-            for (let i = 0; i < 20; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 20) / 255.0 * sens * 4.0;
-            c.fillStyle = cor;
-            for (let p of vorticesParticulas) {
-                p.angulo += (p.velocidade + audioMod * 0.05) * (freq > 0 ? freq * 0.0003 : 0.5);
-                let raio = p.raio + Math.sin(3 * p.angulo + tempo * 2.0) * (12.0 + audioMod * 15.0);
-                p.x = Math.cos(p.angulo) * raio; p.y = Math.sin(p.angulo) * raio;
-                c.fillRect(p.x, p.y, p.tamanho, p.tamanho);
-            }
-        }
-
-        function desenharRedeCristais3D(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-    c.strokeStyle = cor;
-
-    // 1. Dimensões e centralização exata no canvas
-    let width = c.canvas.width;
-    let height = c.canvas.height;
-    if (!width || width === 0) width = window.innerWidth;
-    if (!height || height === 0) height = window.innerHeight;
-
-    let cx = width / 20;
-    let cy = height / 20;
-
-    let tempo = Date.now() * 0.0015;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-
-    // 2. Cálculo seguro da modulação de áudio
-    let audioMod = 1.0;
-    if (typeof dataArray !== 'undefined' && dataArray && dataArray.length > 0) {
-        let somaVol = 0;
-        let limite = Math.min(15, dataArray.length);
-        for (let i = 0; i < limite; i++) {
-            somaVol += (dataArray[i] || 0);
-        }
-        audioMod = (somaVol / limite) / 255.0 * s * 35.0;
-    } else {
-        audioMod = 5.0 * s;
-    }
-
-    // 3. Fallback de segurança: se cristais3D não existir, cria uma malha temporária para evitar erros
-    if (typeof cristais3D === 'undefined' || !Array.isArray(cristais3D)) {
-        cristais3D = [];
-        for (let i = 0; i < 40; i++) {
-            cristais3D.push({
-                ox: (Math.random() - 0.5) * 300,
-                oy: (Math.random() - 0.5) * 300,
-                oz: (Math.random() - 0.5) * 200,
-                tamanho: Math.random() * 4 + 2,
-                fase: Math.random() * Math.PI * 2
-            });
-        }
-    }
-
-    // 4. Renderização e Projeção 3D com centralização aplicada
-    for (let p of cristais3D) {
-        let z = p.oz + Math.sin(tempo * 4.0 + p.fase) * (audioMod + 2.0);
-        
-        // Garante que o denominador nunca seja zero ou negativo extremo
-        let perspectiva = 400 + z + 250;
-        if (perspectiva < 10) perspectiva = 10;
-        let esc = 400 / perspectiva;
-
-        // Posição projetada transladada para o centro da tela (cx, cy)
-        let xProj = cx + (p.ox * esc);
-        let yProj = cy + (p.oy * esc);
-        let tamanhoFinal = Math.max(0.8, p.tamanho * esc);
-
-        // Desenha o cristal em 3D
-        c.beginPath();
-        c.arc(xProj, yProj, tamanhoFinal, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = Math.min(1.0, Math.max(0.2, esc * 0.8));
-        c.fill();
-    }
-
-    c.restore();
-}
-
-
-        function desenharEfeitoFaraday(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.003, somaVol = 0;
-            for (let i = 0; i < 15; i++) somaVol += dataArray[i];
-            let audioMod = (somaVol / 15) / 255.0 * sens * 25.0;
-            c.fillStyle = cor;
-            for (let gota of gotasFaraday) {
-                let yReal = gota.baseY - Math.abs(Math.sin(tempo * 2.5 + gota.fase)) * (gota.amplitudeSalto + audioMod);
-                c.fillRect(gota.baseX, yReal, 3.5, 3.5);
-            }
-        }
-
-     function desenharWavePendulum(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-    c.strokeStyle = cor;
-
-    // 1. Pega as dimensões reais internas do canvas (evita desalinhamentos de escala)
-    let width = c.canvas.width;
-    let height = c.canvas.height;
-    
-    // Se por acaso o canvas vier com 0, usa o tamanho da janela como fallback
-    if (!width || width === 0) width = window.innerWidth;
-    if (!height || height === 0) height = window.innerHeight;
-
-    // Centro exato do canvas
-    let cx = width / 20;
-    let cy = height / 20; 
-
-    let numPendulos = 35;
-    let tempo = Date.now() * 0.001;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-    let f = (typeof freq !== 'undefined' && !isNaN(freq)) ? freq : 220;
-
-    // 2. Modulação segura baseada no espectro de áudio
-    let audioMod = 1.0;
-    if (typeof dataArray !== 'undefined' && dataArray && dataArray.length > 0) {
-        let index = Math.floor(mapRange(f, 60, 2000, 0, dataArray.length - 1));
-        audioMod = (dataArray[index] || 100) / 128.0;
-    }
-
-    // 3. Distribuição vertical centralizada em cy
-    let alturaTotal = numPendulos * 10;
-    let inicioY = cy - (alturaTotal / 2);
-
-    for (let i = 0; i < numPendulos; i++) {
-        let freqPendulo = 0.7 + (i * 0.05); 
-        let amplitude = 80 * s * (0.5 + audioMod * 0.5);
-
-        // Posição X calculada a partir do centro exato (cx)
-        let xOffset = Math.sin(tempo * freqPendulo * 3.0) * amplitude;
-        let x = cx + xOffset;
-        let y = inicioY + (i * 10);
-
-        // Desenha o ponto/esfera do pêndulo
-        c.beginPath();
-        c.arc(x, y, 2.5, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = 0.9;
-        c.fill();
-
-        // Linha guia subtil ligando ao eixo central
-        c.beginPath();
-        c.moveTo(cx, y);
-        c.lineTo(x, y);
-        c.lineWidth = 0.5;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.15;
-        c.stroke();
-    }
-
-    c.restore();
-}
-
-// Função auxiliar local para mapeamento de valores
-function mapRange(value, inMin, inMax, outMin, outMax) {
-    let clamped = Math.max(inMin, Math.min(inMax, value));
-    return (clamped - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
- 
-// Função auxiliar local para mapeamento de valores
-function mapRange(value, inMin, inMax, outMin, outMax) {
-    let clamped = Math.max(inMin, Math.min(inMax, value));
-    return (clamped - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
-   
-      function desenharTuboRubens(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-    c.strokeStyle = cor;
-
-    // 1. Dimensões e posicionamento mais acima no centro da tela (40% do topo)
-    let width = c.canvas.width || window.innerWidth;
-    let height = c.canvas.height || window.innerHeight;
-    let cx = width / 20;
-    let cy = height * 0.40; // Puxa o tubo mais para cima, saindo da parte inferior
-
-    let f = (typeof freq !== 'undefined' && !isNaN(freq)) ? freq : 220;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-    let tempo = Date.now() * 0.003;
-
-    // Captura dados do espectro de áudio se disponíveis
-    let audioAmp = 1.0;
-    if (typeof dataArray !== 'undefined' && dataArray && dataArray.length > 10) {
-        let indexAudio = Math.floor(mapRange(f, 60, 2000, 0, dataArray.length - 1));
-        audioAmp = (dataArray[indexAudio] || 128) / 128.0;
-    }
-
-    let numChamas = 64;
-    let larguraTubo = Math.min(width * 0.85, 600);
-    let passoX = larguraTubo / numChamas;
-    let inicioX = -larguraTubo / 2;
-
-    // 2. O Tubo Físico de Fundo (Estrutura metálica base)
-    c.beginPath();
-    c.rect(inicioX - 15, cy + 5, larguraTubo + 30, 8);
-    c.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    c.fill();
-
-    // Linha central de gás
-    c.beginPath();
-    c.moveTo(inicioX - 15, cy + 9);
-    c.lineTo(inicioX + larguraTubo + 15, cy + 9);
-    c.lineWidth = 2;
-    c.strokeStyle = cor;
-    c.globalAlpha = 0.4;
-    c.stroke();
-    c.globalAlpha = 1.0;
-
-    // 3. Cálculo e Renderização das Chamas (Ondas Estacionárias)
-    let numeroDeHarmonicos = Math.floor(mapRange(f, 60, 2000, 1, 12)); 
-
-    for (let i = 0; i <= numChamas; i++) {
-        let x = inicioX + (i * passoX);
-        let proporcao = i / numChamas;
-
-        let ondaEspacial = Math.sin(proporcao * Math.PI * numeroDeHarmonicos);
-        let alturaBase = (Math.pow(Math.abs(ondaEspacial), 1.5) * 75 + 10);
-        let alturaFinal = alturaBase * (0.4 + (audioAmp * 0.6)) * s;
-
-        c.save();
-        c.translate(x, cy); // As chamas crescem para cima a partir da nova posição central-superior
-        
-        c.fillStyle = cor;
-        c.globalAlpha = 0.85;
-
-        // Corpo principal da chama
-        c.fillRect(-2, -alturaFinal, 4, alturaFinal);
-
-        // Ponta superior da chama (cintilação)
-        let cintilacao = Math.sin(tempo * 10 + i) * 3;
-        c.beginPath();
-        c.arc(0, -alturaFinal, 1.5 + (cintilacao > 0 ? cintilacao * 0.3 : 0), 0, Math.PI * 2);
-        c.globalAlpha = 0.5;
-        c.fill();
-
-        c.restore();
-    }
-
-    c.restore();
-}
-
-// Função auxiliar local
-function mapRange(value, inMin, inMax, outMin, outMax) {
-    let clamped = Math.max(inMin, Math.min(inMax, value));
-    return (clamped - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
-  
-
-     function desenharCymascopeAgua(freq, sens, cor, c) {
-    let tempo = Date.now() * 0.002;
-    
-    c.save();
-    // Centraliza automaticamente no meio do canvas para o desenho aparecer na tela
-    c.translate(c.canvas.width / 25, c.canvas.height / 25);
-    
-    c.strokeStyle = cor; 
-    c.lineWidth = 1.5;
-
-    // Adapta o número de ondulações/pétalas geometricamente com base na frequência recebida
-    let numeroDeOndas = Math.floor(freq / 100) + 3;
-    // Garante um valor padrão caso a sensibilidade venha indefinida
-    let fatorSens = sens !== undefined ? sens : 1.0;
-
-    for (let r = 20; r < 170; r += 12) {
-        c.beginPath();
-        let primeiroPonto = true; // Substitui o theta === 0 para evitar falhas de arredondamento
-
-        for (let theta = 0; theta <= Math.PI * 2; theta += 0.04) {
-            // Calcula o raio aplicando a frequência, o tempo e a sensibilidade
-            let raio = r + Math.sin(r * 0.08 - tempo * 3.0) * Math.cos(numeroDeOndas * theta + tempo) * 8.0 * fatorSens;
-            let x = Math.cos(theta) * raio;
-            let y = Math.sin(theta) * raio;
-
-            if (primeiroPonto) {
-                c.moveTo(x, y);
-                primeiroPonto = false;
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.closePath(); // Fecha o ciclo do padrão perfeitamente
-        c.stroke();
-    }
-    
-    c.restore(); // Restaura o contexto original do canvas
-}
-   
-
-        function desenharChladniTriangular(freq, sens, cor, c) {
-            c.fillStyle = cor;
-            for (let p of particulasTriangular) {
-                if (Math.abs(Math.sin(2 * Math.PI * (p.x / 120)) * Math.sin(2 * Math.PI * (p.y / 120))) > 0.08) {
-                    p.x += (Math.random() - 0.5) * 4.0 * sens; p.y += (Math.random() - 0.5) * 4.0 * sens;
-                }
-                c.fillRect(p.x, p.y, 1.8, 1.8);
-            }
-        }
-
-      function desenharChladniCircularRadial(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-
-    // 1. Coordenadas do centro da tela obtidas diretamente do canvas
-    let width = c.canvas.width || window.innerWidth;
-    let height = c.canvas.height || window.innerHeight;
-    let cx = width / 20;
-    let cy = height / 20;
-
-    // 2. Inicialização interna automática das partículas (evita erros se esquecer de declarar fora)
-    if (typeof window._particulasChladni === 'undefined' || !window._particulasChladni || window._particulasChladni.length === 0) {
-        window._particulasChladni = [];
-        let totalParticulas = 1500;
-        for (let i = 0; i < totalParticulas; i++) {
-            let angulo = Math.random() * Math.PI * 2;
-            let raio = Math.random() * 150; // Raio máximo da placa circular
-            window._particulasChladni.push({
-                x: Math.cos(angulo) * raio,
-                y: Math.sin(angulo) * raio,
-                ox: Math.cos(angulo) * raio,
-                oy: Math.sin(angulo) * raio
-            });
-        }
-    }
-
-    let particulas = window._particulasChladni;
-    let tempo = Date.now() * 0.001;
-
-    // 3. Tratamento seguro de frequências e sensibilidade
-    let f = (typeof freq !== 'undefined' && !isNaN(freq)) ? freq : 440;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-
-    // Modos de vibração dinâmicos baseados na frequência do som
-    let modoN = Math.floor(mapRange(f, 60, 2000, 2, 6)); // Linhas radiais
-    let modoM = Math.floor(mapRange(f, 60, 2000, 1, 4)); // Anéis concêntricos
-    let raioMaximo = 150;
-
-    // 4. Processamento e desenho das partículas (Padrão Chladni em Placa Circular)
-    for (let p of particulas) {
-        let r = Math.hypot(p.ox, p.oy);
-        let theta = Math.atan2(p.oy, p.ox);
-
-        // Equação física das placas circulares (Bessel + Harmónicos)
-        let vibracao = Math.sin(modoN * theta + tempo) * Math.sin((r / raioMaximo) * modoM * Math.PI);
-
-        // Se a vibração for próxima de zero, forma-se a linha nodal (onde a "areia" se acumula)
-        if (Math.abs(vibracao) < 0.2) {
-            // Partícula assenta na linha geométrica exata
-            let screenX = cx + p.ox;
-            let screenY = cy + p.oy;
-            c.fillRect(screenX, screenY, 2, 2);
-        } else {
-            // Fora dos nós, a energia sonora agita a partícula levemente
-            let jitterX = p.ox + (Math.random() - 0.5) * 3.5 * s;
-            let jitterY = p.oy + (Math.random() - 0.5) * 3.5 * s;
-            let screenX = cx + jitterX;
-            let screenY = cy + jitterY;
-            c.fillRect(screenX, screenY, 1.2, 1.2);
-        }
-    }
-
-    c.restore();
-}
-
-// Função auxiliar interna para conversão de margens de frequência
-function mapRange(value, inMin, inMax, outMin, outMax) {
-    return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
-// --- Bloco seguro e blindado para inicializar o Atrator de Lorenz ---
-if (typeof window.pontosLorenz === 'undefined' || !window.pontosLorenz.length) {
-    window.pontosLorenz = [];
-    // Ponto inicial padrão para evitar NaN ou divergência nas equações
-    window.pontosLorenz.push({ x: 0.1, y: 1.0, z: 1.0 });
-}
-
-// --- Função corrigida do Atrator de Lorenz ---
-function desenharAtratorLorenz(freq, sens, cor, c) {
-    if (!c) return; // Proteção de contexto nulo
-    c.save();
-    c.fillStyle = cor;
-
-    // Reatividade sonora: o volume do áudio acelera ou distorce levemente o passo temporal (dt)
-    let audioMod = (typeof dataArray !== 'undefined' && dataArray ? (dataArray[4] || 10) : 10) * sens * 0.0008;
-    let dt = 0.007 + audioMod;
-
-    let pontos = window.pontosLorenz;
-    if (!pontos || pontos.length === 0) {
-        c.restore();
-        return;
-    }
-
-    // Pega o último ponto de forma segura
-    let p = pontos[pontos.length - 1];
-
-    // Equações de Lorenz com os coeficientes corretos (sigma=10, rho=28, beta=8/3)
-    let dx = 10 * (p.y - p.x);
-    let dy = p.x * (28 - p.z) - p.y;
-    let dz = p.x * p.y - (8/3) * p.z;
-
-    let novoX = p.x + dx * dt;
-    let novoY = p.y + dy * dt;
-    let novoZ = p.z + dz * dt;
-
-    // Adiciona o novo ponto calculado e limita o tamanho máximo do rastro
-    pontos.push({ x: novoX, y: novoY, z: novoZ });
-    if (pontos.length > 1500) {
-        pontos.shift();
-    }
-
-    // Rotação 3D suave baseada no tempo para dar efeito tridimensional dinâmico
-    let rot = Date.now() * 0.0003;
-    let cosR = Math.cos(rot);
-    let sinR = Math.sin(rot);
-
-    // Renderiza cada ponto do atrator na tela com ajuste de escala e centralização do eixo Z
-    for (let pt of pontos) {
-        let xRot = pt.x * cosR - (pt.z - 25) * sinR;
-        let yProj = pt.y;
-
-        c.fillRect(xRot * 3.8 * sens, yProj * 3.8 * sens, 1.2, 1.2);
-    }
-
-    c.restore();
-}
-
-// --- Bloco seguro e blindado para o Tubo de Kundt (Já estava correto) ---
-if (typeof window.particulasKundt === 'undefined') {
-    window.particulasKundt = [];
-    for (let i = 0; i < 350; i++) {
-        window.particulasKundt.push({
-            x: (Math.random() - 0.5) * 200,
-            y: (Math.random() - 0.5) * 20,
-            vx: 0
-        });
-    }
-}
-
-
-function desenharTuboKundt(freq, sens, cor, c) {
-    if (!c) return; // Proteção caso o contexto do canvas venha nulo
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (typeof dataArray !== 'undefined' && dataArray ? (dataArray[10] || 30) : 30) * sens * 0.2;
-
-    c.lineWidth = 1.3;
-    c.globalAlpha = 0.85;
-
-    let larguraTubo = 220;
-    let alturaTubo = 45;
-    
-    // Desenha o tubo
-    c.strokeRect(-larguraTubo / 2, -alturaTubo / 2, larguraTubo, alturaTubo);
-
-    c.beginPath();
-    c.moveTo(-larguraTubo / 2 + 10, -alturaTubo / 2);
-    c.lineTo(-larguraTubo / 2 + 10, alturaTubo / 2);
-    c.stroke();
-
-    c.globalAlpha = 0.9;
-    let k = 4 + (freq > 0 ? Math.floor(freq * 0.02) % 4 : 0);
-
-    // Usa a referência segura global
-    let particulas = window.particulasKundt;
-    if (particulas) {
-        for (let p of particulas) {
-            let posNorm = p.x / (larguraTubo / 2);
-            let forcaAcustica = Math.cos(posNorm * Math.PI * k + tempo * 3) * (0.8 + audioMod * 0.1);
-
-            p.vx += forcaAcustica * 0.15;
-            p.vx *= 0.75;
-            p.x += p.vx;
-
-            if (p.x < -larguraTubo / 2 + 15) {
-                p.x = -larguraTubo / 2 + 15;
-                p.vx *= -0.5;
-            }
-            if (p.x > larguraTubo / 2 - 10) {
-                p.x = larguraTubo / 2 - 10;
-                p.vx *= -0.5;
-            }
-
-            let jitterY = (Math.random() - 0.5) * (2 + audioMod * 0.1);
-            let renderY = Math.max(-alturaTubo / 2 + 5, Math.min(alturaTubo / 2 - 5, p.y + jitterY));
-
-            c.fillRect(p.x, renderY, 1.8, 1.8);
-        }
-    }
-
-    c.restore();
-}
-
-        // Inicializador global seguro para as partículas de areia da placa triangular
-if (typeof particulasAreiaTriangular === 'undefined') {
-    var particulasAreiaTriangular = [];
-    for (let i = 0; i < 400; i++) {
-        particulasAreiaTriangular.push({
-            x: (Math.random() - 0.5) * 120,
-            y: (Math.random() - 0.5) * 120,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5
-        });
-    }
-}
-
-function desenharChladniTriangular(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[12] || 30) : 30) * sens * 0.2;
-
-    // Frequências base moduladas pelo tempo e pelo som
-    let m = 3 + Math.floor(Math.sin(tempo * 0.5) * 1) + (freq > 0 ? Math.floor(freq * 0.01) % 3 : 0);
-    let n = 5 + Math.floor(Math.cos(tempo * 0.4) * 1);
-
-    c.lineWidth = 1.2;
-    c.globalAlpha = 0.85;
-
-    // 1. Desenha o contorno da placa triangular vibratória centralizada
-    let tamanhoLado = 130 + (audioMod * 0.3);
-    let alturaTri = tamanhoLado * (Math.sqrt(3) / 2);
-    
-    c.beginPath();
-    // Vértices do triângulo equilátero centrado na origem
-    let x1 = 0, y1 = -alturaTri * 0.6;
-    let x2 = -tamanhoLado / 2, y2 = alturaTri * 0.4;
-    let x3 = tamanhoLado / 2, y3 = alturaTri * 0.4;
-    
-    c.moveTo(x1, y1);
-    c.lineTo(x2, y2);
-    c.lineTo(x3, y3);
-    c.closePath();
-    c.stroke();
-
-    // 2. Simulação física das partículas de areia migrando para as linhas nodais (Chladni)
-    c.globalAlpha = 0.9;
-    for (let p of particulasAreiaTriangular) {
-        // Equação matemática aproximada de placa vibratória em geometria triangular
-        // A areia foge das áreas de alta vibração (antinodos) e se acumula onde o valor se aproxima de zero (nodos)
-        let nx = p.x * 0.04;
-        let ny = p.y * 0.04;
-        
-        // Função de onda estendida para triângulos
-        let vibracao = Math.sin(m * nx) * Math.sin(n * ny) - Math.cos(n * nx) * Math.sin(m * ny);
-        
-        // Força empurrando a partícula para longe dos antinodos
-        let foraX = Math.cos(nx * m + tempo) * 0.3;
-        let foraY = Math.sin(ny * n - tempo) * 0.3;
-
-        // Se a vibração for alta, a areia chacoalha; se for perto de zero, ela acomoda
-        if (Math.abs(vibracao) > 0.15) {
-            p.vx += (Math.random() - 0.5) * 0.8 + foraX;
-            p.vy += (Math.random() - 0.5) * 0.8 + foraY;
-        } else {
-            // Atrito nas linhas nodais (a areia para de se mover e forma o desenho)
-            p.vx *= 0.6;
-            p.vy *= 0.6;
-        }
-
-        // Aplicação de velocidade com amortecimento
-        p.x += p.vx * 0.4;
-        p.y += p.vy * 0.4;
-
-        // Restrição para manter as partículas dentro dos limites do triângulo geométrico
-        // (Verificação baricêntrica simples de contenção)
-        if (p.y < -alturaTri * 0.5 || p.y > alturaTri * 0.45 || Math.abs(p.x) > tamanhoLado * 0.5) {
-            p.x = (Math.random() - 0.5) * 70;
-            p.y = (Math.random() - 0.5) * 70;
-            p.vx = 0;
-            p.vy = 0;
-        }
-
-        // Desenha o grão de areia individual
-        c.beginPath();
-        c.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-        c.fill();
-    }
-
-    c.restore();
-}
-function desenharOndasGravitacionais(freq, sens, cor, c) {
-            let tempo = Date.now() * 0.002;
-            c.strokeStyle = cor;
-            c.lineWidth = 1.0;
-            for (let r = 20; r < 180; r += 20) {
-                let deformacao = Math.sin(r * 0.1 - tempo * 4) * 6 * sens;
-                c.beginPath();
-                c.arc(0, 0, r + deformacao, 0, Math.PI * 2);
-                c.stroke();
-            }
-        }
-
-function desenharEsferasHarmonicas(freq, sens, cor, c) {
-    if (!c || !c.canvas) return;
-
-    c.save();
-    c.fillStyle = cor;
-    c.strokeStyle = cor;
-
-    // 1. Dimensões e centralização exata no canvas (corrigido de /20 para /2)
-    let width = c.canvas.width;
-    let height = c.canvas.height;
-    if (!width || width === 0) width = window.innerWidth;
-    if (!height || height === 0) height = window.innerHeight;
-
-    let cx = width / 25;
-    let cy = height / 25;
-
-    let tempo = Date.now() * 0.0008;
-    let s = (typeof sens !== 'undefined' && !isNaN(sens)) ? sens : 1.0;
-    let f = (typeof freq !== 'undefined' && !isNaN(freq)) ? freq : 220;
-
-    let raioEsfera = 140 * s;
-
-    // 2. Fallback de segurança: inicializa a malha esférica 3D caso não exista
-    if (typeof particulasEsfera === 'undefined' || !Array.isArray(particulasEsfera) || particulasEsfera.length === 0) {
-        particulasEsfera = [];
-        let numParticulas = 3500;
-        for (let i = 0; i < numParticulas; i++) {
-            let theta = Math.acos(Math.random() * 2 - 1);
-            let phi = Math.random() * Math.PI * 2;
-            particulasEsfera.push({ theta: theta, phi: phi });
-        }
-    }
-
-    // Modulação de harmônicos esféricos baseada na frequência do áudio
-    let l = Math.floor(mapRange(f, 60, 3000, 1, 7)) % 6 + 1;
-    let m = Math.floor(mapRange(f, 60, 3000, 0, l));
-
-    let rotY = tempo * 0.7;
-    let rotX = Math.sin(tempo * 0.5) * 0.4;
-
-    // 3. Renderização e Projeção 3D dos Harmônicos Esféricos
-    for (let part of particulasEsfera) {
-        // Equação de harmônicos esféricos (Y_l^m) para deformação da superfície
-        let harm = Math.cos(l * part.theta) * Math.cos(m * part.phi + tempo * 2.0);
-        let raioDinamico = raioEsfera * (1.0 + harm * 0.25);
-
-        let x = raioDinamico * Math.sin(part.theta) * Math.cos(part.phi);
-        let y = raioDinamico * Math.cos(part.theta);
-        let z = raioDinamico * Math.sin(part.theta) * Math.sin(part.phi);
-
-        // Rotação 3D nos eixos X e Y
-        let x1 = x * Math.cos(rotY) + z * Math.sin(rotY);
-        let z1 = -x * Math.sin(rotY) + z * Math.cos(rotY);
-        let y1 = y * Math.cos(rotX) - z1 * Math.sin(rotX);
-
-        // Projeção perspectiva
-        let perspectiva = 450 + (y * Math.sin(rotX) + z1 * Math.cos(rotX)) + 200;
-        if (perspectiva < 10) perspectiva = 10;
-        let esc = 450 / perspectiva;
-
-        // Posição final projetada no centro da tela (cx, cy)
-        let xProj = cx + (x1 * esc);
-        let yProj = cy + (y1 * esc);
-        let tamanhoFinal = Math.max(0.8, 1.8 * esc);
-
-        c.beginPath();
-        c.arc(xProj, yProj, tamanhoFinal, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = Math.min(1.0, Math.max(0.3, esc * 0.9));
-        c.fill();
-    }
-
-    c.restore();
-}
-
-function desenharChladniAreia(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[15] || 30) * sens * 0.2;
-    let tamanhoPlaca = 75;
-
-    // 1. Desenho da moldura da Placa Triangular
-    c.beginPath();
-    let alturaTri = tamanhoPlaca * Math.sqrt(3) / 2;
-    c.moveTo(0, -alturaTri * 2/3);
-    c.lineTo(-tamanhoPlaca / 2, alturaTri / 3);
-    c.lineTo(tamanhoPlaca / 2, alturaTri / 3);
-    c.closePath();
-    c.lineWidth = 1.0;
-    c.strokeStyle = cor;
-    c.globalAlpha = 0.3;
-    c.stroke();
-
-    // 2. Simulação física de acumulação de areia nas linhas nodais triangulares
-    c.globalAlpha = 0.85;
-    for (let p of particulasAreiaTriangular) {
-        // Equação modal aproximada para o padrão nodal de Chladni em triângulos
-        // As partículas vibram e são empurradas para fora das zonas de antinodo (alta vibração)
-        let xNorm = p.x / tamanhoPlaca;
-        let yNorm = p.y / tamanhoPlaca;
-        
-        // Gradiente de vibração triangular simulado
-        let vibracao = Math.sin(xNorm * Math.PI * 3 + tempo) * Math.cos(yNorm * Math.PI * 3 - tempo);
-        let intensidadeVib = Math.abs(vibracao) * (1.2 + audioMod * 0.5);
-
-        if (intensidadeVib > 0.25) {
-            // Se estiver em zona de vibração, a areia "pula" (recebe força aleatória)
-            p.vx = (Math.random() - 0.5) * 3.5 * sens;
-            p.vy = (Math.random() - 0.5) * 3.5 * sens;
-        } else {
-            // Se estiver perto de uma linha nodal (baixa vibração), a areia desacelera e acumula
-            p.vx *= 0.6;
-            p.vy *= 0.6;
-        }
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Restrição de limites para manter a areia dentro do triângulo equilátero
-        let limitY = alturaTri / 3;
-        if (p.y > limitY) { p.y = limitY; p.vy *= -1; }
-        if (p.y < -alturaTri * 2/3) { p.y = -alturaTri * 2/3; p.vy *= -1; }
-        let limiteXLocal = (limitY - p.y) * 0.866;
-        if (p.x > limiteXLocal) { p.x = limiteXLocal; p.vx *= -1; }
-        if (p.x < -limiteXLocal) { p.x = -limiteXLocal; p.vx *= -1; }
-
-        // Desenha o grão de areia acumulado
-        c.fillRect(p.x, p.y, 1.8, 1.8);
-    }
-
-    c.restore();
-}
-
-        // Defina esta variável fora das funções para manter o controle contínuo:
-let anguloGlobal = 0; 
-
-p
-function desenharRosetas(freq, sens, cor, c) {
-    let numLados = 6;
-    
-    // Incrementa a rotação global com base no tempo/frequência para dar movimento dinâmico
-    anguloGlobal += 0.01 + (freq * 0.00002); 
-
-    for (let s = 0; s < numLados; s++) {
-        c.save(); 
-        // Aplica a rotação dos lados somada à rotação dinâmica contínua
-        c.rotate(s * ((Math.PI * 2) / numLados) + anguloGlobal);
-        
-        c.beginPath();
-        for (let i = 0; i < dataArray.length / 2; i++) {
-            // Usa o valor do dataArray e adiciona variação da frequência para pulsar
-            let valorAudio = dataArray[i] || 0;
-            let raio = 60 + (valorAudio * sens * 0.8) + (Math.sin(i * 0.2 + anguloGlobal * 5) * (freq * 0.02));
-            
-            let angulo = i * 0.05;
-            let x = raio * Math.cos(angulo), y = raio * Math.sin(angulo);
-            i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
-        }
-        c.strokeStyle = cor; 
-        c.lineWidth = 1.3; 
-        c.stroke();
-        c.restore();
-    }
-}
-
-        function desenharHexagrama(sens, cor, c) { desenharRosetas(0, sens, cor, c); }
-       function desenharMatricial(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    // Captura reatividade sonora real do array de áudio, com fallback seguro
-    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[8] || 30) : 30) * sens * 0.2;
-
-    c.lineWidth = 1.3;
-    c.globalAlpha = 0.85;
-
-    let totalCamadas = 6;
-
-    for (let i = 0; i < totalCamadas; i++) {
-        c.save();
-
-        // Rotação individual alternada e sutil para cada camada baseada no tempo e no índice
-        let rotacaoCamada = Math.sin(tempo * (0.3 + i * 0.1)) * 0.2 + (i % 2 === 0 ? tempo * 0.1 : -tempo * 0.1);
-        c.rotate(rotacaoCamada);
-
-        // Tamanho dinâmico modulado pelas frequências do áudio e índice da camada
-        let tamanhoBase = 35 + (i * 30);
-        let tamanho = tamanhoBase + (audioMod * (i * 0.3));
-        let deslocamento = -tamanho / 2;
-
-        // Desenha o retângulo da matriz com cantos ou proporção limpa
-        c.beginPath();
-        c.strokeRect(deslocamento, deslocamento, tamanho, tamanho);
-
-        c.restore();
-    }
-
-    // Núcleo central de ancoragem da matriz
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.25), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
- 
-
-        function desenharEspiral(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[15] || 30) : 30) * sens * 0.2;
-
-    c.lineWidth = 1.5;
-    c.globalAlpha = 0.85;
-    c.beginPath();
-
-    let totalPontos = 120;
-    // Rotação contínua baseada no tempo e modulada pelo áudio
-    let rotacaoDinamica = tempo * 0.5;
-    // Fator de expansão orgânica que pulsa com o som
-    let fatorExpansao = 1.8 + (audioMod * 0.05);
-
-    for (let i = 0; i < totalPontos; i++) {
-        // Raio progressivo com expansão modulada
-        let r = i * fatorExpansao;
-        // Ângulo com variação temporal para criar movimento de rotação/respiração
-        let a = (i * 0.2) + rotacaoDinamica;
-
-        let x = r * Math.cos(a);
-        let y = r * Math.sin(a);
-
-        if (i === 0) {
-            c.moveTo(x, y);
-        } else {
-            c.lineTo(x, y);
-        }
-    }
-    c.stroke();
-
-    // Núcleo central pulsante da espiral
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.3), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharLissajous(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray ? (dataArray[10] || 30) : 30) * sens * 0.15;
-
-    // Frequências dinâmicas moduladas pelo tempo e pelo áudio (substitui os valores fixos 2 e 3)
-    let freqX = 2 + Math.sin(tempo * 0.4) * 0.8 + (freq * 0.002);
-    let freqY = 3 + Math.cos(tempo * 0.3) * 0.8;
-    
-    // Defasagem (phase shift) que muda com o tempo para rotacionar a curva no espaço
-    let delta = tempo * 0.5;
-
-    let raioBase = 85 + audioMod;
-    let pontos = 200;
-
-    c.beginPath();
-
-    for (let i = 0; i <= pontos; i++) {
-        let t = (i / pontos) * Math.PI * 2;
-        
-        // Equações paramétricas de Lissajous com variação de fase e frequência
-        let x = raioBase * Math.sin(freqX * t + delta);
-        let y = raioBase * Math.cos(freqY * t);
-
-        if (i === 0) {
-            c.moveTo(x, y);
-        } else {
-            c.lineTo(x, y);
-        }
-    }
-
-    c.lineWidth = 1.5;
-    c.globalAlpha = 0.85;
-    c.stroke();
-
-    // Núcleo central de ancoragem
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
-function desenharOndasAgua(freq, sens, cor, c) {
-    c.save();
-    c.lineWidth = 1.5;
-
-    let tempo = Date.now() * 0.002;
-    // Captura dados do áudio de forma segura para dar movimento dinâmico às ondas
-    let audioMod = (typeof dataArray !== 'undefined' ? (dataArray[10] || 30) : 30) * sens * 0.3;
-
-    let numOndas = 12;
-    let raioMax = 250;
-
-    // Desenha as ondas concêntricas expandindo a partir do centro (0,0)
-    for (let i = 1; i <= numOndas; i++) {
-        let raio = ((tempo * 50 + i * 20) % raioMax) + (audioMod * 1.5);
-        let opacidade = Math.max(0, 1.0 - (raio / raioMax));
-        
-        c.beginPath();
-        // Utiliza coordenadas relativas ao centro correto (removido o erro de divisão por 25)
-        c.arc(0, 0, raio, 0, Math.PI * 2);
-        
-        // Define a cor com esmaecimento progressivo conforme a onda se expande
-        if (typeof chkCores !== 'undefined' && chkCores.checked) {
-            c.strokeStyle = cor;
-        } else {
-            c.strokeStyle = `rgba(56, 189, 248, ${opacidade * 0.7})`;
-        }
-        c.stroke();
-    }
-    c.restore();
-}
-        function desenharRedesHexagonais(freq, sens, cor, c) { desenharRosetas(freq, sens, cor, c); }
-        function desenharCurvasRosa(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[12] || 30) * sens * 0.25;
-
-    // Parâmetro 'k' define o número de pétalas (se k for inteiro: k pétalas se ímpar, 2k se par)
-    // Modulamos levemente k com o tempo ou áudio para criar um efeito orgânico de abertura/fechamento
-    let kNumerator = 3;
-    let kDenominator = 2;
-    let k = (kNumerator / kDenominator) + Math.sin(tempo * 0.2) * 0.1;
-
-    let raioMaximo = 75 + (audioMod * 10);
-    let pontos = 300;
-    let rotacaoDinamica = tempo * 0.3;
-
-    c.beginPath();
-
-    for (let i = 0; i <= pontos; i++) {
-        // O ângulo theta percorre o suficiente para fechar a curva da rosa (múltiplos de PI)
-        let theta = (i / pontos) * Math.PI * (kDenominator % 2 === 0 ? kDenominator * 2 : kDenominator * 4);
-        
-        // Equação polar da curva rosa: r = a * cos(k * theta)
-        let r = raioMaximo * Math.cos(k * theta);
-
-        // Conversão de coordenadas polares (r, theta) para cartesianas (x, y) com rotação
-        let x = r * Math.cos(theta + rotacaoDinamica);
-        let y = r * Math.sin(theta + rotacaoDinamica);
-
-        if (i === 0) {
-            c.moveTo(x, y);
-        } else {
-            c.lineTo(x, y);
-        }
-    }
-
-    c.closePath();
-    c.lineWidth = 1.3;
-    c.globalAlpha = 0.85;
-    c.stroke();
-
-    // Núcleo central de ancoragem pulsante
-    c.beginPath();
-    c.arc(0, 0, 2.5 + (audioMod * 0.25), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharEspiralAurea(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[20] || 30) * sens * 0.25;
-
-    // Constante da Razão Áurea (Phi)
-    let phi = 1.61803398875;
-    // Fator de crescimento logarítmico para a espiral áurea exata (b = ln(phi) / (pi/2))
-    let b = 0.3063489; 
-
-    let voltas = 3.5;
-    let pontos = 160;
-    let escalaBase = 6 + (audioMod * 1.5);
-    let rotacaoDinamica = tempo * 0.2;
-
-    c.beginPath();
-
-    for (let i = 0; i <= pontos; i++) {
-        let t = (i / pontos) * (voltas * Math.PI * 2);
-        
-        // Equação da espiral logarítmica com taxa de expansão áurea
-        let r = escalaBase * Math.exp(b * t);
-
-        let x = r * Math.cos(t + rotacaoDinamica);
-        let y = r * Math.sin(t + rotacaoDinamica);
-
-        if (i === 0) {
-            c.moveTo(x, y);
-        } else {
-            c.lineTo(x, y);
-        }
-    }
-
-    c.lineWidth = 1.2;
-    c.globalAlpha = 0.85;
-    c.stroke();
-
-    // Núcleo central de ancoragem proporcional
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.3), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharMoire(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[28] || 35) * sens * 0.25;
-    let maxRaio = 80;
-
-    // 1. Primeira Camada de Padrão Moiré (Círculos concêntricos fixos/pulsantes)
-    let espacamento = 6;
-    let numAnéis = 12;
-
-    c.lineWidth = 0.8;
-    c.globalAlpha = 0.4;
-
-    for (let i = 1; i <= numAnéis; i++) {
-        let raio = i * espacamento + (audioMod * 0.5);
-        c.beginPath();
-        c.arc(0, 0, raio, 0, Math.PI * 2);
-        c.stroke();
-    }
-
-    // 2. Segunda Camada de Padrão Moiré (Círculos concêntricos deslocados e em rotação)
-    // O deslocamento cria o efeito clássico de interferência moiré
-    let offsetX = Math.sin(tempo * 0.5) * (8 + audioMod * 0.5);
-    let offsetY = Math.cos(tempo * 0.4) * (8 + audioMod * 0.5);
-
-    c.globalAlpha = 0.35;
-    for (let i = 1; i <= numAnéis; i++) {
-        let raio = i * espacamento;
-        c.beginPath();
-        c.arc(offsetX, offsetY, raio, 0, Math.PI * 2);
-        c.stroke();
-    }
-
-    // 3. Padrão Geométrico Radial Secundário (Para realçar as franjas de interferência)
-    let linhasRadiantes = 16;
-    let anguloRotacao = tempo * 0.2;
-
-    c.globalAlpha = 0.2;
-    for (let r = 0; r < linhasRadiantes; r++) {
-        let ang = (r / linhasRadiantes) * Math.PI * 2 + anguloRotacao;
-        c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(Math.cos(ang) * maxRaio, Math.sin(ang) * maxRaio);
-        c.stroke();
-    }
-
-    // Núcleo central de ancoragem
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.8;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharLissajous3D(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[25] || 35) * sens * 0.25;
-    
-    // Parâmetros de frequência das curvas de Lissajous (modulados levemente pelo áudio/tempo)
-    let a = 3;
-    let b = 2;
-    let delta = tempo * 0.5;
-
-    let pontos = 120;
-    let tamanho = 70 + (audioMod * 10);
-
-    // Ângulos de rotação 3D para dar o efeito tridimensional no canvas 2D
-    let rotX = tempo * 0.4;
-    let rotY = tempo * 0.6;
-
-    c.beginPath();
-
-    for (let i = 0; i <= pontos; i++) {
-        let t = (i / pontos) * Math.PI * 2;
-
-        // Coordenadas 3D originais (X, Y, Z)
-        let x3d = Math.sin(a * t + delta) * tamanho;
-        let y3d = Math.cos(b * t) * tamanho;
-        let z3d = Math.sin(t) * (tamanho * 0.5 + audioMod * 5); // Profundidade reativa ao som
-
-        // Rotação no Eixo Y
-        let x1 = x3d * Math.cos(rotY) + z3d * Math.sin(rotY);
-        let z1 = -x3d * Math.sin(rotY) + z3d * Math.cos(rotY);
-
-        // Rotação no Eixo X
-        let y1 = y3d * Math.cos(rotX) - z1 * Math.sin(rotX);
-        let zFinal = y3d * Math.sin(rotX) + z1 * Math.cos(rotX);
-
-        // Projeção perspectiva simples para 2D (quanto maior o Z, mais próximo/aparente)
-        let perspectiva = 300 / (300 + zFinal);
-        let px = x1 * perspectiva;
-        let py = y1 * perspectiva;
-
-        if (i === 0) {
-            c.moveTo(px, py);
-        } else {
-            c.lineTo(px, py);
-        }
-    }
-
-    c.closePath();
-    c.lineWidth = 1.0;
-    c.strokeStyle = cor;
-    c.globalAlpha = 0.85;
-    c.stroke();
-
-    // Núcleo central de ancoragem tridimensional
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.9;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharJulia(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[22] || 35) * sens * 0.2;
-    let maxIteracoes = 16;
-    let escala = 45 + (audioMod * 8);
-
-    // Constantes do Conjunto de Julia moduladas pelo tempo e pelo som
-    let cReal = -0.7 + Math.sin(tempo * 0.5) * 0.15;
-    let cImag = 0.27015 + Math.cos(tempo * 0.4) * (0.05 + audioMod * 0.02);
-
-    let linhas = 12;
-    let colunas = 12;
-    let passoX = 1.8 / colunas;
-    let passoY = 1.8 / linhas;
-
-    // Renderização de malha fractal baseada em iteração complexa z = z^2 + c
-    for (let i = -colunas / 2; i <= colunas / 2; i++) {
-        for (let j = -linhas / 2; j <= linhas / 2; j++) {
-            let zx = i * passoX;
-            let zy = j * passoY;
-            let iter = 0;
-
-            while (iter < maxIteracoes) {
-                let xtemp = zx * zx - zy * zy + cReal;
-                zy = 2.0 * zx * zy + cImag;
-                zx = xtemp;
-
-                if (zx * zx + zy * zy > 4.0) break;
-                iter++;
-            }
-
-            // Se o ponto pertencer ao conjunto ou próximo ao limiar, desenhamos a malha de transição
-            if (iter > 2) {
-                let px = (i / (colunas / 2)) * (escala * 0.8);
-                let py = (j / (linhas / 2)) * (escala * 0.8);
-
-                let raioPonto = (iter / maxIteracoes) * 2.0;
-
-                c.beginPath();
-                c.arc(px, py, Math.max(0.5, raioPonto), 0, Math.PI * 2);
-                c.fillStyle = cor;
-                c.globalAlpha = (iter / maxIteracoes) * (0.4 + (audioMod * 0.1));
-                c.fill();
-            }
-        }
-    }
-
-    // Estrutura geométrica central para ancorar o fractal
-    c.beginPath();
-    c.arc(0, 0, 3 + (audioMod * 0.5), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.8;
-    c.fill();
-
-    c.restore();
-}
-
-        function desenharBessel(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.0015;
-    let audioMod = (dataArray[18] || 30) * sens * 0.25;
-    let maxRaio = 90;
-
-    // 1. Centro de vibração da membrana circular
-    c.beginPath();
-    c.arc(0, 0, 2 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.8;
-    c.fill();
-
-    // 2. Anéis Nodais da Função de Bessel (Ondas estacionárias radiais e circunferenciais)
-    let raiosNodais = 4; // Número de nós radiais
-    let setoresAngulares = 8; // Simetria angular (nós diametrais)
-
-    for (let r = 1; r <= raiosNodais; r++) {
-        let raioBase = (maxRaio / raiosNodais) * r;
-        let pontos = 72;
-
-        c.beginPath();
-        for (let p = 0; p <= pontos; p++) {
-            let ang = (p / pontos) * Math.PI * 2;
-            
-            // Aproximação matemática inspirada nas oscilações de Bessel para membranas
-            let ondaRadial = Math.sin(r * Math.PI * (raioBase / maxRaio) - tempo * 3);
-            let ondaAngular = Math.cos(ang * setoresAngulares + tempo * 2);
-            
-            // Deslocamento da membrana modulado pelo áudio
-            let deslocamento = ondaRadial * ondaAngular * (audioMod * 0.4);
-            let rFinal = Math.max(3, raioBase + deslocamento);
-
-            let x = Math.cos(ang) * rFinal;
-            let y = Math.sin(ang) * rFinal;
-
-            if (p === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.closePath();
-        c.lineWidth = 0.8;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.2 + (r * 0.15);
-        c.stroke();
-    }
-
-    // 3. Linhas Nodais Diametrais (Eixos de simetria da vibração)
-    let eixos = setoresAngulares / 2;
-    for (let e = 0; e < eixos; e++) {
-        let anguloEixo = (e / eixos) * Math.PI + (tempo * 0.2);
-        
-        c.beginPath();
-        c.moveTo(Math.cos(anguloEixo) * 10, Math.sin(anguloEixo) * 10);
-        c.lineTo(Math.cos(anguloEixo) * maxRaio, Math.sin(anguloEixo) * maxRaio);
-        c.moveTo(Math.cos(anguloEixo + Math.PI) * 10, Math.sin(anguloEixo + Math.PI) * 10);
-        c.lineTo(Math.cos(anguloEixo + Math.PI) * maxRaio, Math.sin(anguloEixo + Math.PI) * maxRaio);
-        
-        c.lineWidth = 0.4;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.15 + (audioMod * 0.02);
-        c.stroke();
-    }
-
-    c.restore();
-}
-
-
-        function desenharCymaticBloom(freq, sens, cor, c) { desenharRosetas(freq, sens, cor, c); }
-        function desenharQuantumVortex(freq, sens, cor, c) { desenharVorticesAcusticos(freq, sens, cor, c); }
-        function desenharDnaHelix(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.002;
-    let audioMod = (dataArray[12] || 25) * sens * 0.25;
-    let alturaHélice = 100;
-    let totalPassos = 14;
-
-    // 1. Renderização dos Pares de Bases Nitrogenadas e Fios da Hélice
-    for (let i = 0; i < totalPassos; i++) {
-        let progresso = i / (totalPassos - 1);
-        let y = (progresso - 0.5) * alturaHélice;
-        
-        // Ângulo de rotação da hélice modulado pelo tempo e pelo áudio
-        let angulo = (progresso * Math.PI * 4) + tempo + (audioMod * 0.1);
-        let raioHélice = 35 + Math.sin(tempo * 2 + progresso * Math.PI) * (audioMod * 0.3);
-
-        // Coordenadas X das duas fitas complementares
-        let x1 = Math.cos(angulo) * raioHélice;
-        let x2 = Math.cos(angulo + Math.PI) * (-raioHélice); // Oposta na fase
-
-        // Desenha a ponte / par de bases conectando as duas fitas
-        c.beginPath();
-        c.moveTo(x1, y);
-        c.lineTo(x2, y);
-        c.lineWidth = 0.6;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.25 + (Math.sin(tempo * 3 + i) * 0.15);
-        c.stroke();
-
-        // Nó / Nucleotídeo na Fita 1
-        c.beginPath();
-        c.arc(x1, y, 2 + (audioMod * 0.1), 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = 0.8;
-        c.fill();
-
-        // Nó / Nucleotídeo na Fita 2
-        c.beginPath();
-        c.arc(x2, y, 2 + (audioMod * 0.1), 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = 0.8;
-        c.fill();
-    }
-
-    // 2. Núcleo Energético Central (Eixo do DNA)
-    c.beginPath();
-    c.moveTo(0, -alturaHélice * 0.55);
-    c.lineTo(0, alturaHélice * 0.55);
-    c.lineWidth = 0.8;
-    c.strokeStyle = cor;
-    c.globalAlpha = 0.15;
-    c.stroke();
-
-    c.restore();
-}
-
-        function desenharCymaticPlasma(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[15] || 25) * sens * 0.22;
-    let maxRaio = 85;
-
-    // 1. Núcleo de Ressonância Acústico-Plasmática Central
-    c.beginPath();
-    c.arc(0, 0, 3 + (audioMod * 0.3), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.7;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Padrões Nodaís Cimáticos (Ondas estacionárias simétricas)
-    let simetria = 6; // Padrão hexagonal de ressonância
-    let camadasCimaticas = 4;
-    
-    for (let l = 1; l <= camadasCimaticas; l++) {
-        let raioBase = (maxRaio / camadasCimaticas) * l;
-        let pontos = 64;
-
-        c.beginPath();
-        for (let p = 0; p <= pontos; p++) {
-            let ang = (p / pontos) * Math.PI * 2;
-            // Modulação matemática de onda estacionária baseada no áudio e tempo
-            let modOnda = Math.sin(ang * simetria + tempo * 2 + l) * (audioMod * 0.4);
-            let rFinal = Math.max(4, raioBase + modOnda);
-
-            let x = Math.cos(ang) * rFinal;
-            let y = Math.sin(ang) * rFinal;
-
-            if (p === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.closePath();
-        c.lineWidth = 0.8;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.2 + (l * 0.15);
-        c.stroke();
-    }
-
-    // 3. Descargas de Plasma nos Nós de Interferência Geométrica
-    let totalNos = 12;
-    for (let n = 0; n < totalNos; n++) {
-        let anguloNo = (n / totalNos) * Math.PI * 2 - (tempo * 0.8);
-        let raioNo = (maxRaio * 0.7) + Math.sin(tempo * 3 + n) * (audioMod * 0.5);
-        
-        let nx = Math.cos(anguloNo) * raioNo;
-        let ny = Math.sin(anguloNo) * raioNo;
-
-        // Filamentos energéticos conectando os nós ao centro
-        c.beginPath();
-        c.moveTo(nx, ny);
-        c.lineTo(nx * 0.3, ny * 0.3);
-        c.lineWidth = 0.5;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.25;
-        c.stroke();
-
-        // Partículas de plasma nos vértices dos nós
-        c.beginPath();
-        c.arc(nx, ny, 1.5, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = 0.8;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharMandalaSacred(freq, sens, cor, c) { desenharRosetas(freq, sens, cor, c); }
-        function desenharStellarPulsar(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.002;
-    let audioMod = (dataArray[10] || 30) * sens * 0.25;
-    let maxRaio = 80;
-
-    // 1. Núcleo Estelar de Alta Energia (Estrela de Nêutrons / Pulsar)
-    c.beginPath();
-    c.arc(0, 0, 4 + (audioMod * 0.4), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.8 + Math.sin(tempo * 6) * 0.2;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Jatos de Plasma Eletromagnético (Campos magnéticos bipolares giratórios)
-    let feixes = 2;
-    for (let f = 0; f < feixes; f++) {
-        c.save();
-        c.rotate(tempo * 2 + (f * Math.PI));
-        
-        c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(-12, maxRaio * 1.2);
-        c.lineTo(12, maxRaio * 1.2);
-        c.closePath();
-        
-        c.fillStyle = cor;
-        c.globalAlpha = 0.15 + (audioMod * 0.02);
-        c.fill();
-        c.restore();
-    }
-
-    // 3. Anéis de Plasma / Ondas de Choque Estelares
-    let aneis = 3;
-    for (let a = 1; a <= aneis; a++) {
-        let raioAnel = (maxRaio / aneis) * a + Math.sin(tempo * 3 + a) * (audioMod * 0.5);
-        let pontos = 28;
-
-        c.beginPath();
-        for (let p = 0; p <= pontos; p++) {
-            let ang = (p / pontos) * Math.PI * 2;
-            // Turbulência de plasma gerada pelo som
-            let turbulencia = Math.sin(ang * 6 - tempo * 4) * (audioMod * 0.35);
-            let rFinal = Math.max(5, raioAnel + turbulencia);
-
-            let x = Math.cos(ang) * rFinal;
-            let y = Math.sin(ang) * rFinal;
-
-            if (p === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.closePath();
-        c.lineWidth = 0.8;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.3 + (a * 0.15);
-        c.stroke();
-    }
-
-    // 4. Ejeções de Partículas de Alta Temperatura (Flare Estelar)
-    let particulas = 14;
-    for (let i = 0; i < particulas; i++) {
-        let anguloP = (i / particulas) * Math.PI * 2 + (tempo * 1.2);
-        let distP = 15 + ((i * 11) % 55) + Math.sin(tempo * 2 + i) * (audioMod * 0.7);
-        
-        let px = Math.cos(anguloP) * distP;
-        let py = Math.sin(anguloP) * distP;
-
-        c.beginPath();
-        c.arc(px, py, 1.2 + (i % 2), 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = Math.abs(Math.sin(tempo * 4 + i)) * 0.7;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharCrystalLattice(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[8] || 20) * sens * 0.2;
-    let escala = 16 + (audioMod * 0.25);
-
-    // 1. Definição dos nós da célula unitária da rede cristalina
-    let nos = [
-        {x: 0, y: 0},                  // Nó central
-        {x: -escala * 1.5, y: -escala * 1.5},
-        {x:  escala * 1.5, y: -escala * 1.5},
-        {x: -escala * 1.5, y:  escala * 1.5},
-        {x:  escala * 1.5, y:  escala * 1.5},
-        {x: 0, y: -escala * 2.2},
-        {x: 0, y:  escala * 2.2},
-        {x: -escala * 2.2, y: 0},
-        {x:  escala * 2.2, y: 0}
-    ];
-
-    // 2. Matriz de conexões (arestas / ligações químicas do cristal)
-    let conexoes = [
-        [0, 1], [0, 2], [0, 3], [0, 4],
-        [1, 5], [2, 5], [3, 6], [4, 6],
-        [1, 7], [3, 7], [2, 8], [4, 8],
-        [5, 7], [5, 8], [6, 7], [6, 8]
-    ];
-
-    // 3. Renderização das ligações (arestas da rede)
-    c.lineWidth = 0.7;
-    for (let conn of conexoes) {
-        let p1 = nos[conn[0]];
-        let p2 = nos[conn[1]];
-        
-        let mod1 = Math.sin(tempo * 3 + conn[0]) * (audioMod * 0.15);
-        let mod2 = Math.sin(tempo * 3 + conn[1]) * (audioMod * 0.15);
-
-        c.beginPath();
-        c.moveTo(p1.x + mod1, p1.y + mod1);
-        c.lineTo(p2.x + mod2, p2.y + mod2);
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.25;
-        c.stroke();
-    }
-
-    // 4. Renderização dos nós atômicos (vértices vibracionais)
-    for (let i = 0; i < nos.length; i++) {
-        let no = nos[i];
-        let pulso = Math.sin(tempo * 4 + i) * (audioMod * 0.35);
-        let raioNo = (i === 0 ? 3.5 : 2) + Math.abs(pulso);
-
-        c.beginPath();
-        c.arc(no.x, no.y, Math.max(1, raioNo), 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = i === 0 ? 0.9 : 0.7;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharHarmonicWeb(freq, sens, cor, c) { desenharVorticesAcusticos(freq, sens, cor, c); }
-        function desenharBioluminescence(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.0015;
-    let audioMod = (dataArray[14] || 25) * sens * 0.22;
-    let maxRaio = 85;
-
-    // 1. Núcleo Bioluminescente Central (Coração da Colônia)
-    c.beginPath();
-    c.arc(0, 0, 5 + (audioMod * 0.4), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.5 + Math.sin(tempo * 4) * 0.2;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Anéis Orgánicos Pulsantes (Membranas celulares fluidas)
-    let camadas = 3;
-    for (let i = 1; i <= camadas; i++) {
-        let raioCamada = (maxRaio / camadas) * i + Math.sin(tempo * 2 + i) * (audioMod * 0.5);
-        let pontos = 24;
-
-        c.beginPath();
-        for (let p = 0; p <= pontos; p++) {
-            let ang = (p / pontos) * Math.PI * 2;
-            // Ondulação orgânica influenciada pelo som
-            let onda = Math.sin(ang * 5 + tempo * 3 + i) * (audioMod * 0.35);
-            let rFinal = Math.max(5, raioCamada + onda);
-
-            let x = Math.cos(ang) * rFinal;
-            let y = Math.sin(ang) * rFinal;
-
-            if (p === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.closePath();
-        c.lineWidth = 0.8;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.25 + (i * 0.15);
-        c.stroke();
-    }
-
-    // 3. Esportes / Partículas Bioluminescentes Flutuantes
-    let totalParticulas = 16;
-    for (let s = 0; s < totalParticulas; s++) {
-        let anguloS = (s / totalParticulas) * Math.PI * 2 + (tempo * 0.5);
-        let distS = 20 + ((s * 7) % 55) + Math.sin(tempo + s) * (audioMod * 0.6);
-        
-        let sx = Math.cos(anguloS) * distS;
-        let sy = Math.sin(anguloS) * distS;
-
-        c.beginPath();
-        c.arc(sx, sy, 1.5 + (s % 2), 0, Math.PI * 2);
-        c.fillStyle = cor;
-        // Efeito de brilho intermitente (piscar bioluminescente)
-        c.globalAlpha = Math.abs(Math.sin(tempo * 3 + s)) * 0.8;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharSuperstringBrane(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.0012;
-    let audioMod = (dataArray[12] || 22) * sens * 0.2;
-    let maxRaio = 85;
-
-    // 1. Núcleo central da singularidade / Brana
-    c.beginPath();
-    c.arc(0, 0, 4 + (audioMod * 0.3), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.6;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Espirais de Torção Gravitacional (Linhas de arrasto e rotação métrica do espaço-tempo)
-    let totalEspirais = 6;
-    for (let e = 0; e < totalEspirais; e++) {
-        c.beginPath();
-        let anguloBase = (e / totalEspirais) * Math.PI * 2;
-        
-        for (let r = 5; r <= maxRaio; r += 3) {
-            // Equação de torção espiralada modulada pelo áudio
-            let espiralAngulo = anguloBase + (r * 0.04) + (tempo * 1.5) + (audioMod * 0.05);
-            let x = Math.cos(espiralAngulo) * r;
-            let y = Math.sin(espiralAngulo) * r;
-
-            if (r === 5) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
-            }
-        }
-        c.lineWidth = 0.8;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.3 + (e % 2 === 0 ? 0.15 : 0.25);
-        c.stroke();
-    }
-
-    // 3. Malha de Brana / Ondas Métricas Concêntricas Deformadas
-    let totalAneis = 4;
-    for (let a = 1; a <= totalAneis; a++) {
-        let raioAnel = (maxRaio / totalAneis) * a + Math.sin(tempo * 2 + a) * (audioMod * 0.4);
-        let pontosAnel = 32;
-
-        c.beginPath();
-        for (let p = 0; p <= pontosAnel; p++) {
-            let ang = (p / pontosAnel) * Math.PI * 2;
-            // Distorção gravitacional anisotrópica guiada pelas ondas sonoras
-            let deformacao = Math.sin(ang * 4 - tempo * 3) * (audioMod * 0.3);
-            let rFinal = Math.max(4, raioAnel + deformacao);
-
-            let px = Math.cos(ang) * rFinal;
-            let py = Math.sin(ang) * rFinal;
-
-            if (p === 0) {
-                c.moveTo(px, py);
-            } else {
-                c.lineTo(px, py);
-            }
-        }
-        c.closePath();
-        c.lineWidth = 0.6;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.2 + (a * 0.1);
-        c.stroke();
-    }
-
-    c.restore();
-}
-
-
-        function desenharRessonancia35(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.0012;
-    let audioMod = (dataArray[6] || 18) * sens * 0.18;
-    let maxRaio = 80;
-
-    // 1. Centro vibracional da placa circular
-    c.beginPath();
-    c.arc(0, 0, 3 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.5;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Linhas Nodais Radiais (Simetria angular da placa)
-    let linhasRadiais = 8;
-    for (let i = 0; i < linhasRadiais; i++) {
-        let angulo = (i / linhasRadiais) * Math.PI * 2 + (tempo * 0.1);
-        let xFim = Math.cos(angulo) * maxRaio;
-        let yFim = Math.sin(angulo) * maxRaio;
-
-        c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(xFim, yFim);
-        c.strokeStyle = cor;
-        c.lineWidth = 0.6;
-        c.globalAlpha = 0.25;
-        c.stroke();
-    }
-
-    // 3. Anéis Nodatais Concêntricos (Círculos de ressonância)
-    let aneis = 4;
-    for (let r = 1; r <= aneis; r++) {
-        let raioAtual = (maxRaio / aneis) * r + Math.sin(tempo * 1.5 + r) * (audioMod * 0.35);
-        
-        c.beginPath();
-        c.arc(0, 0, Math.max(6, raioAtual), 0, Math.PI * 2);
-        c.strokeStyle = cor;
-        c.lineWidth = 0.9;
-        c.globalAlpha = 0.2 + (r * 0.12);
-        c.stroke();
-    }
-
-    // 4. Partículas / "Areia" de Chladni (Nós de interferência oscilante)
-    let totalPontos = 70;
-    for (let p = 0; p < totalPontos; p++) {
-        let angulo = (p / totalPontos) * Math.PI * 2 + (tempo * 0.15);
-        let m = 4; // Frequência do modo circular
-        let n = 3; // Frequência do modo radial
-        
-        // Simulação matemática aproximada da distribuição nodal de Chladni
-        let rMod = maxRaio * Math.abs(Math.sin(m * angulo) * Math.cos(n * (p / totalPontos) * Math.PI + tempo));
-        let rFinal = Math.max(5, rMod + (audioMod * 0.4));
-
-        let px = Math.cos(angulo) * rFinal;
-        let py = Math.sin(angulo) * rFinal;
-
-        c.beginPath();
-        c.arc(px, py, 1.3, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.globalAlpha = 0.75;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharRessonancia36(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-
-    let tempo = Date.now() * 0.001;
-    let audioMod = (dataArray[10] || 20) * sens * 0.15;
-    let raioBase = 50 + (audioMod * 0.4);
-
-    // 1. Núcleo vibracional central da rede cristalina
-    c.beginPath();
-    c.arc(0, 0, 4 + (audioMod * 0.2), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.5;
-    c.fill();
-    c.globalAlpha = 1.0;
-
-    // 2. Estrutura geométrica tridimensional (Projeção de rede cristalina)
-    let camadasCristal = 3;
-    for (let camada = 1; camada <= camadasCristal; camada++) {
-        let rCamada = (raioBase / camadasCristal) * camada;
-        let lados = 6; // Geometria hexagonal baseada em estruturas cristalinas
-
-        c.beginPath();
-        for (let i = 0; i <= lados; i++) {
-            let angulo = (i / lados) * Math.PI * 2 + (tempo * (camada % 2 === 0 ? 0.2 : -0.2));
-            
-            // Deformação da rede com base na frequência sonora
-            let deformacao = Math.sin(angulo * 3 + tempo * 2) * (audioMod * 0.5);
-            let rx = Math.cos(angulo) * (rCamada + deformacao);
-            let ry = Math.sin(angulo) * (rCamada + deformacao);
-
-            if (i === 0) {
-                c.moveTo(rx, ry);
-            } else {
-                c.lineTo(rx, ry);
-            }
-
-            // 3. Nós de cristal nas junções geométricas
-            c.save();
-            c.beginPath();
-            c.arc(rx, ry, 2, 0, Math.PI * 2);
-            c.fillStyle = cor;
-            c.globalAlpha = 0.8;
-            c.fill();
             c.restore();
         }
-        c.closePath();
-        c.lineWidth = 1.0;
-        c.strokeStyle = cor;
-        c.globalAlpha = 0.3 + (camada * 0.2);
-        c.stroke();
-    }
 
-    // 4. Eixos de conexão isométrica (Profundidade 3D simulada)
-    let totalEixos = 6;
-    for (let e = 0; e < totalEixos; e++) {
-        let anguloEixo = (e / totalEixos) * Math.PI * 2 + (tempo * 0.1);
-        let xFim = Math.cos(anguloEixo) * (raioBase + 10);
-        let yFim = Math.sin(anguloEixo) * (raioBase + 10);
+        function desenharOscilacaoCristalinaPrateada(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 8; i++) {
+                c.save();
+                c.rotate((i * Math.PI) / 4 + tempo);
+                c.scale(1 + (energia * 0.005 * sens), 1 + (energia * 0.005 * sens));
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 60) % 700) / 700 * 360}, 90%, 75%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.strokeRect(-60 - energia * 0.3, -60 - energia * 0.3, 120 + energia * 0.6, 120 + energia * 0.6);
+                c.restore();
+            }
+            c.restore();
+        }
 
-        c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(xFim, yFim);
-        c.strokeStyle = cor;
-        c.lineWidth = 0.5;
-        c.globalAlpha = 0.25;
-        c.stroke();
-    }
+        function desenharHarmonicaVazioQuantico(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.004 + (freq * 0.0002);
+            for (let p of particulas) {
+                let dist = Math.sqrt(p.x * p.x + p.y * p.y);
+                let audioMod = (dataArray ? (dataArray[Math.floor(dist) % dataArray.length] || 0) * 0.3 * sens : 0);
+                let px = p.x + Math.sin(tempo + dist * 0.15) * (15 + audioMod);
+                let py = p.y + Math.cos(tempo + dist * 0.15) * (15 + audioMod);
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + dist * 2) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                c.fillRect(px, py, 2.5 + (energia * 0.02 * sens), 2.5 + (energia * 0.02 * sens));
+            }
+            c.restore();
+        }
 
-    c.restore();
-}
+        function desenharRessonanciaPlasmaEstelar(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            c.rotate(tempo * 1.2);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 100%, 70%, 0.95)` : cor;
+            c.lineWidth = 2.0;
+            c.beginPath();
+            for (let i = 0; i < 120; i++) {
+                let ang = (i / 120) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.4 * sens : 0);
+                let r = 80 + Math.sin(ang * 14 + tempo * 6) * (35 + (energia * 0.5 * sens) + audioMod);
+                let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
 
-        function desenharRessonancia37(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-    c.lineWidth = 1.0;
+        function desenharEsferaRessonante(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            for (let i = 0; i < 8; i++) {
+                c.save();
+                c.rotate(tempo * (i % 2 === 0 ? 1 : -1) + i * 0.4);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 50) % 700) / 700 * 360}, 90%, 65%, 0.8)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(0, 0, 70 + (i * 12) + (energia * 0.3 * sens) + Math.sin(tempo * 4 + i) * 20, 0, Math.PI * 2);
+                c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
 
-    let tempo = Date.now() * 0.002;
-    let audioMod = (dataArray[12] || 15) * sens * 0.15;
-    let raioMaior = 65; // Raio principal do anel toroidal
-    let raioMenor = 22; // Espessura do tubo do toro
+        function desenharChladniHexagonal(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            c.rotate(tempo * 0.4);
+            for (let ring = 1; ring <= 5; ring++) {
+                for (let i = 0; i < 6; i++) {
+                    let ang = (i / 6) * Math.PI * 2 + (tempo * 0.5);
+                    let cx = Math.cos(ang) * (ring * 30 + energia * 0.2 * sens);
+                    let cy = Math.sin(ang) * (ring * 30 + energia * 0.2 * sens);
+                    c.strokeStyle = chkCores.checked ? `hsla(${((freq + ring * 50) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                    c.lineWidth = 1.4;
+                    c.save();
+                    c.translate(cx, cy);
+                    c.rotate(tempo * i);
+                    c.strokeRect(-18, -18, 36, 36);
+                    c.restore();
+                }
+            }
+            c.restore();
+        }
 
-    // 1. Núcleo central de energia do Torus
-    let raioNucleo = 8 + (audioMod * 0.5);
-    c.beginPath();
-    c.arc(0, 0, Math.max(3, raioNucleo), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.35;
-    c.fill();
-    c.globalAlpha = 1.0;
+        function desenharVorticesAcusticos(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.6);
+            for (let i = 0; i < 7; i++) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 40) % 700) / 700 * 360}, 90%, 60%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(i * 12, 0, 30 + (i * 18) + (energia * 0.35 * sens) + Math.sin(tempo * 5 + i) * 15, 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
 
-    // 2. Seções transversais do Tubo Toroidal em Rotação Dinâmica
-    let totalSecoes = 10;
-    for (let i = 0; i < totalSecoes; i++) {
-        let anguloBase = (i / totalSecoes) * Math.PI * 2 + (tempo * 0.4);
-        
-        c.save();
-        c.rotate(anguloBase);
+        function desenharRedeCristais3D(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.5);
+            for (let i = 0; i < 10; i++) {
+                let ang = (i / 10) * Math.PI * 2;
+                let r = 80 + (energia * 0.3 * sens);
+                let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 35) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath(); c.moveTo(0, 0); c.lineTo(x, y); c.stroke();
+                c.save();
+                c.translate(x, y);
+                c.rotate(tempo * 2 + i);
+                c.strokeRect(-12, -12, 24, 24);
+                c.restore();
+            }
+            c.restore();
+        }
 
-        // Deslocamento do tubo em relação ao eixo central, reativo ao áudio
-        let distanciaCentro = raioMaior + Math.sin(tempo * 1.5 + i) * (audioMod * 0.6);
-        let rx = raioMenor + (audioMod * 0.4);
-        let ry = (raioMenor * 0.5) + Math.cos(tempo + i) * 4;
+        function desenharEfeitoFaraday(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.4);
+            for (let i = 0; i < 18; i++) {
+                let ang = (i / 18) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.4 * sens : 0);
+                let r = 50 + Math.sin(tempo * 5 + i) * (25 + (energia * 0.4 * sens) + audioMod);
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + i * 30) % 700) / 700 * 360}, 100%, 65%, 0.9)` : cor;
+                c.fillRect(Math.cos(ang) * r, Math.sin(ang) * r, 6 + (energia * 0.03 * sens), 6 + (energia * 0.03 * sens));
+            }
+            c.restore();
+        }
 
-        // Desenha o corte elíptico do toro
-        c.beginPath();
-        c.ellipse(distanciaCentro, 0, Math.max(4, rx), Math.max(2, ry), 0, 0, Math.PI * 2);
-        c.strokeStyle = i % 2 === 0 ? cor : 'rgba(56, 189, 248, 0.45)';
-        c.lineWidth = 1.2;
-        c.stroke();
+        function desenharWavePendulum(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            c.lineWidth = 1.8;
+            for (let i = -60; i <= 60; i += 5) {
+                let audioMod = (dataArray ? (dataArray[Math.abs(i) % dataArray.length] || 0) * 0.3 * sens : 0);
+                let h = Math.sin(i * 0.12 + tempo * 4) * (50 + (energia * 0.5 * sens) + audioMod);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + Math.abs(i) * 5) % 700) / 700 * 360}, 90%, 60%, 0.85)` : cor;
+                c.beginPath();
+                c.moveTo(i * 3, 0); c.lineTo(i * 3, h);
+                c.stroke();
+            }
+            c.restore();
+        }
 
-        // 3. Partículas de Fluxo Orbitando o Interior do Tubo Toroidal
-        let anguloFluxo = tempo * 3.5 + (i * 0.5);
-        let px = distanciaCentro + Math.cos(anguloFluxo) * (rx * 0.65);
-        let py = Math.sin(anguloFluxo) * (ry * 0.65);
+        function desenharTuboRubens(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            for (let i = -25; i <= 25; i++) {
+                let x = i * 11;
+                let audioMod = (dataArray ? (dataArray[Math.abs(i) % dataArray.length] || 0) * 0.4 * sens : 0);
+                let h = (Math.sin(i * 0.25 - tempo * 5) * 0.5 + 0.5) * (70 + (energia * 0.6 * sens) + audioMod);
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + i * 15) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+                c.fillRect(x, 0, 7, -h);
+            }
+            c.restore();
+        }
 
-        c.beginPath();
-        c.arc(px, py, 1.8, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.fill();
+        function desenharCymascopeAgua(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            for (let r = 25; r < 150; r += 20) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + r * 4) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(0, 0, r + Math.sin(r * 0.12 - tempo * 4) * (10 + (energia * 0.3 * sens)), 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
 
-        c.restore();
-    }
+        function desenharChladniTriangular(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.5);
+            for (let i = 1; i <= 5; i++) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 50) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.6;
+                c.beginPath();
+                let r = i * 28 + (energia * 0.3 * sens);
+                for (let p = 0; p <= 3; p++) {
+                    let ang = (p / 3) * Math.PI * 2 + (tempo * 0.3);
+                    let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                    p === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+                }
+                c.closePath(); c.stroke();
+            }
+            c.restore();
+        }
 
-    // 4. Anel de Contenção Externa (Borda do Campo Toroidal)
-    c.beginPath();
-    c.arc(0, 0, raioMaior + raioMenor + Math.sin(tempo) * (audioMod * 0.3), 0, Math.PI * 2);
-    c.strokeStyle = 'rgba(56, 189, 248, 0.25)';
-    c.lineWidth = 0.8;
-    c.stroke();
+        function desenharChladniRadial(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            for (let i = 1; i <= 6; i++) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 45) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(0, 0, i * 24 + Math.sin(tempo * 4 + i) * (12 + (energia * 0.3 * sens)), 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
 
-    c.restore();
-}
+        function desenharOndasGravitacionais(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.8;
+            c.beginPath();
+            for (let a = 0; a < Math.PI * 2; a += 0.01) {
+                let audioMod = (dataArray ? (dataArray[Math.floor(a * 10) % dataArray.length] || 0) * 0.3 * sens : 0);
+                let r = 90 + Math.sin(a * 5 - tempo * 5) * (30 + (energia * 0.4 * sens) + audioMod);
+                let x = Math.cos(a) * r, y = Math.sin(a) * r * 0.65;
+                a === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharEsferasHarmonicas(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.5);
+            for (let i = 0; i < 8; i++) {
+                c.save();
+                c.rotate((i * Math.PI) / 4);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 45) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath(); c.arc(55, 0, 35 + (energia * 0.3 * sens) + Math.sin(tempo * 4 + i) * 10, 0, Math.PI * 2); c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharEspiralUlam(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.6);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+            c.lineWidth = 1.4;
+            c.beginPath();
+            for (let t = 0; t < 35; t += 0.15) {
+                let r = t * 4.5 + (energia * 0.15 * sens);
+                let x = r * Math.cos(t + tempo), y = r * Math.sin(t + tempo);
+                t === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharAtratorLorenz(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.3);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.4;
+            c.beginPath();
+            let x = 1, y = 1, z = 1;
+            let dt = 0.01;
+            for (let i = 0; i < 450; i++) {
+                let dx = 10 * (y - x) * dt;
+                let dy = (x * (28 - (z + energia * 0.01 * sens)) - y) * dt;
+                let dz = (x * y - (8/3) * z) * dt;
+                x += dx; y += dy; z += dz;
+                let px = x * 3.2, py = y * 3.2;
+                i === 0 ? c.moveTo(px, py) : c.lineTo(px, py);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharTuboKundt(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            for (let i = -110; i <= 110; i += 9) {
+                let audioMod = (dataArray ? (dataArray[Math.abs(i) % dataArray.length] || 0) * 0.35 * sens : 0);
+                let desloc = Math.sin(i * 0.22 + tempo * 5) * (20 + (energia * 0.4 * sens) + audioMod);
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + Math.abs(i) * 3) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.fillRect(i + desloc, -6, 5, 12);
+            }
+            c.restore();
+        }
+
+        function desenharChladniQuadrada(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            let size = 80 + (energia * 0.3 * sens);
+            c.strokeRect(-size, -size, size * 2, size * 2);
+            c.strokeRect(-size * 0.5, -size * 0.5, size, size);
+            c.restore();
+        }
+
+        function desenharOndasAgua(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            for (let r = 30; r < 160; r += 25) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + r * 3) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath();
+                c.arc(0, 0, r + Math.sin(r * 0.12 - tempo * 4) * (8 + (energia * 0.3 * sens)), 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
+
+        function desenharRosetas(freq, sens, cor, c) {
+            let numLados = 8;
+            let energia = dataArray ? dataArray.reduce((a, b) => a + b, 0) / dataArray.length : 20;
+            anguloGlobal += 0.012 + (freq * 0.00003); 
+            for (let s = 0; s < numLados; s++) {
+                c.save(); 
+                c.rotate(s * ((Math.PI * 2) / numLados) + anguloGlobal);
+                c.beginPath();
+                for (let i = 0; i < (dataArray ? dataArray.length / 2 : 60); i++) {
+                    let valorAudio = dataArray ? (dataArray[i] || 0) : 20;
+                    let raio = 70 + (valorAudio * sens * 0.9) + (Math.sin(i * 0.25 + anguloGlobal * 6) * (freq * 0.025));
+                    let angulo = i * 0.045;
+                    let x = raio * Math.cos(angulo), y = raio * Math.sin(angulo);
+                    i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+                }
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + s * 45) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor; 
+                c.lineWidth = 1.5; 
+                c.stroke();
+                c.restore();
+            }
+        }
+
+        function desenharHexagrama(sens, cor, c, freq = 440, energia = 20) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.00015);
+            c.rotate(tempo * 0.5);
+            for (let i = 0; i < 4; i++) {
+                c.save();
+                c.rotate((i * Math.PI) / 4 + tempo);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 70) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.6;
+                c.beginPath();
+                let r = 90 + (energia * 0.4 * sens);
+                for (let p = 0; p <= 3; p++) {
+                    let ang = (p / 3) * Math.PI * 2 + tempo;
+                    let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                    p === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+                }
+                c.closePath(); c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharMatricial(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.2);
+            for (let x = -70; x <= 70; x += 18) {
+                for (let y = -70; y <= 70; y += 18) {
+                    let audioMod = (dataArray ? (Math.abs(x + y) % dataArray.length) : 0);
+                    let s = 3 + Math.sin(tempo * 4 + x * y * 0.01) * 3 + (energia * 0.03 * sens);
+                    c.fillStyle = chkCores.checked ? `hsla(${((freq + Math.abs(x * y)) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+                    c.fillRect(x, y, s, s);
+                }
+            }
+            c.restore();
+        }
+
+        function desenharEspiral(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.5;
+            c.beginPath();
+            for (let t = 0; t < Math.PI * 7; t += 0.05) {
+                let r = t * 9 + (energia * 0.15 * sens);
+                let x = r * Math.cos(t), y = r * Math.sin(t);
+                t === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharLissajous(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.rotate(tempo * 0.4);
+            c.beginPath();
+            for (let t = 0; t <= Math.PI * 2; t += 0.01) {
+                let x = Math.sin(3 * t + tempo) * (90 + energia * 0.2 * sens);
+                let y = Math.sin(2 * t) * (90 + energia * 0.2 * sens);
+                t === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharRedesHexagonais(freq, sens, cor, c, energia = 20) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.00015);
+            let raioHex = 85;
+            let dx = raioHex * Math.sqrt(3), dy = raioHex * 1.5;
+            for (let row = -1; row <= 1; row++) {
+                for (let col = -1; col <= 1; col++) {
+                    c.save();
+                    c.translate(col * dx, row * dy);
+                    c.rotate(tempo * (row + col + 1));
+                    c.scale(0.32, 0.32);
+                    desenharRosetas(freq, sens, cor, c);
+                    c.restore();
+                }
+            }
+            c.restore();
+        }
+
+        function desenharCurvasRosa(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.beginPath();
+            let k = 5;
+            for (let theta = 0; theta < Math.PI * 2; theta += 0.01) {
+                let r = (90 + energia * 0.3 * sens) * Math.cos(k * theta);
+                let x = r * Math.cos(theta), y = r * Math.sin(theta);
+                theta === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharEspiralAurea(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.3);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.5;
+            c.beginPath();
+            for (let theta = 0; theta < Math.PI * 6; theta += 0.04) {
+                let r = 2.2 * Math.exp(0.18 * theta) + (energia * 0.15 * sens);
+                let x = r * Math.cos(theta), y = r * Math.sin(theta);
+                theta === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharMoire(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            c.rotate(tempo * 0.3);
+            for (let i = -70; i <= 70; i += 14) {
+                c.save();
+                c.translate(i + Math.sin(tempo * 3 + i) * 10, 0);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + Math.abs(i) * 4) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath(); c.arc(0, 0, 80 + energia * 0.2 * sens, 0, Math.PI * 2); c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharLissajous3D(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.beginPath();
+            for (let t = 0; t <= Math.PI * 2; t += 0.01) {
+                let x = Math.sin(3 * t + tempo) * (85 + energia * 0.2 * sens);
+                let y = Math.sin(2 * t) * (85 + energia * 0.2 * sens);
+                let z = Math.cos(t) * (25 + energia * 0.1 * sens);
+                let px = x + z, py = y + z;
+                t === 0 ? c.moveTo(px, py) : c.lineTo(px, py);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharJulia(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.0001);
+            c.rotate(tempo * 0.3);
+            for (let i = 1; i <= 6; i++) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 40) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath();
+                c.arc(0, 0, i * 22 + Math.sin(tempo * 5 + i) * (12 + energia * 0.25 * sens), 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
+
+        function desenharBessel(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            for (let r = 20; r < 130; r += 20) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + r * 5) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(0, 0, r + Math.sin(r * 0.15 - tempo * 4) * (7 + (energia * 0.3 * sens)), 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
+
+        function desenharCymaticBloom(freq, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.00015);
+            let petalas = 10;
+            let energia = dataArray ? dataArray.reduce((a, b) => a + b, 0) / dataArray.length : 20;
+            c.rotate(tempo * 0.4);
+            for (let s = 0; s < petalas; s++) {
+                c.save();
+                c.rotate(s * ((Math.PI * 2) / petalas));
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + s * 35) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                for (let i = 0; i < 70; i++) {
+                    let r = i * 1.5;
+                    let ang = Math.sin(i * 0.06 + tempo * 3) * (0.6 + energia * 0.01 * sens);
+                    let x = r, y = ang * r * 2.2;
+                    i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+                }
+                c.stroke();
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharQuantumVortex(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            c.rotate(tempo * 0.7);
+            for (let i = 0; i < 60; i++) {
+                let ang = i * 0.45 + tempo;
+                let r = i * 2.2 + Math.sin(tempo * 4 + i) * 10;
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + i * 12) % 700) / 700 * 360}, 100%, 65%, 0.9)` : cor;
+                c.fillRect(Math.cos(ang) * r, Math.sin(ang) * r, 3 + energia * 0.02 * sens, 3 + energia * 0.02 * sens);
+            }
+            c.restore();
+        }
+
+        function desenharDnaHelix(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.00015);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.beginPath();
+            for (let i = -70; i <= 70; i += 4) {
+                let y = i;
+                let audioMod = (dataArray ? (dataArray[Math.abs(i) % dataArray.length] || 0) * 0.3 * sens : 0);
+                let x1 = Math.sin(i * 0.1 + tempo * 4) * (45 + audioMod);
+                let x2 = Math.sin(i * 0.1 + tempo * 4 + Math.PI) * (45 + audioMod);
+                c.moveTo(x1, y); c.lineTo(x2, y);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharCymaticPlasma(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            c.rotate(tempo * 1.2);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 100%, 70%, 0.95)` : cor;
+            c.lineWidth = 1.8;
+            c.beginPath();
+            for (let a = 0; a < Math.PI * 2; a += 0.04) {
+                let audioMod = (dataArray ? (dataArray[Math.floor(a * 15) % dataArray.length] || 0) * 0.35 * sens : 0);
+                let r = 80 + Math.sin(a * 10 + tempo * 6) * (25 + (energia * 0.4 * sens) + audioMod);
+                let x = Math.cos(a) * r, y = Math.sin(a) * r;
+                a === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharMandalaSacred(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.00015);
+            let raioBase = 65 + (energia * 0.4 * sens);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 6; i++) {
+                let ang = (i / 6) * Math.PI * 2;
+                let x = Math.cos(ang) * raioBase, y = Math.sin(ang) * raioBase;
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 55) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath(); c.arc(x, y, raioBase * 0.75, 0, Math.PI * 2); c.stroke();
+            }
+            c.restore();
+        }
+
+        function desenharStellarPulsar(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0035 + (freq * 0.0002);
+            c.rotate(tempo * 0.6);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 100%, 70%, 0.95)` : cor;
+            c.lineWidth = 1.8;
+            c.beginPath();
+            for (let i = 0; i < 16; i++) {
+                let ang = (i / 16) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.4 * sens : 0);
+                let r = 60 + Math.sin(tempo * 6 + i) * (30 + (energia * 0.4 * sens) + audioMod);
+                let x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+                i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.closePath(); c.stroke();
+            c.restore();
+        }
+
+        function desenharCrystalLattice(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 5; i++) {
+                c.save();
+                c.rotate(i * Math.PI / 5 + tempo);
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 50) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                let size = 45 + (energia * 0.2 * sens);
+                c.strokeRect(-size, -size, size * 2, size * 2);
+                c.restore();
+            }
+            c.restore();
+        }
+
+        function desenharHarmonicWeb(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.002 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            let numPontos = 12;
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.85)` : cor;
+            c.lineWidth = 1.3;
+            let pontos = [];
+            for (let i = 0; i < numPontos; i++) {
+                let ang = (i / numPontos) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.3 * sens : 0);
+                let r = 85 + Math.sin(tempo * 4 + i) * (15 + audioMod);
+                pontos.push({ x: Math.cos(ang) * r, y: Math.sin(ang) * r });
+            }
+            for (let i = 0; i < numPontos; i++) {
+                for (let j = i + 1; j < numPontos; j++) {
+                    c.beginPath(); c.moveTo(pontos[i].x, pontos[i].y); c.lineTo(pontos[j].x, pontos[j].y); c.stroke();
+                }
+            }
+            c.restore();
+        }
+
+        function desenharBioluminescence(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 40; i++) {
+                let ang = i * 0.5 + tempo;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.3 * sens : 0);
+                let r = i * 3.5 + Math.sin(tempo * 4 + i) * (12 + audioMod);
+                c.fillStyle = chkCores.checked ? `hsla(${((freq + i * 10) % 700) / 700 * 360}, 95%, 70%, 0.9)` : '#10b981';
+                c.fillRect(Math.cos(ang) * r, Math.sin(ang) * r, 3.5 + energia * 0.02 * sens, 3.5 + energia * 0.02 * sens);
+            }
+            c.restore();
+        }
+
+        function desenharSuperstringBrane(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.beginPath();
+            for (let x = -90; x <= 90; x += 5) {
+                let audioMod = (dataArray ? (dataArray[Math.abs(x) % dataArray.length] || 0) * 0.3 * sens : 0);
+                let y = Math.sin(x * 0.06 + tempo * 4) * (45 + (energia * 0.4 * sens) + audioMod);
+                x === -90 ? c.moveTo(x, y) : c.lineTo(x, y);
+            }
+            c.stroke();
+            c.restore();
+        }
+
+        function desenharNohToroidais(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.4);
+            for (let i = 1; i <= 5; i++) {
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 45) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.5;
+                c.beginPath();
+                c.arc(0, 0, i * 24 + (energia * 0.3 * sens) + Math.sin(tempo * 3 + i) * 10, 0, Math.PI * 2);
+                c.stroke();
+            }
+            c.restore();
+        }
 
         function desenharRessonancia38(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-    c.lineWidth = 1.3;
-
-    let tempo = Date.now() * 0.002;
-    let audioMod = (dataArray[8] || 15) * sens * 0.15;
-    
-    // Define o número de pontas da estrela de Rubens com base na frequência capturada
-    let pontasEstrela = Math.floor(mapRange(freq, 60, 3000, 3, 9)) % 7 + 3;
-    let raioBase = 90;
-
-    // 1. Núcleo central pulsante de ignição
-    c.beginPath();
-    let raioNucleo = 15 + Math.sin(tempo * 4) * 4 + (audioMod * 0.5);
-    c.arc(0, 0, Math.max(3, raioNucleo), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.6;
-    c.fill();
-    c.globalAlpha = 1.0;
-    c.stroke();
-
-    // 2. Traçado do Polímero / Estrela Sonora Estacionária
-    c.beginPath();
-    let pontos = 180;
-    for (let i = 0; i <= pontos; i++) {
-        let angulo = (i / pontos) * Math.PI * 2;
-        
-        // Equação de onda estacionária radial modelando as chamas/nós da estrela
-        let ondaChamas = Math.sin(pontasEstrela * angulo - tempo * 2.0) * (25 + audioMod * 10);
-        let modulacaoFrequencia = Math.cos(angulo * 2 + (freq * 0.002)) * 8;
-        
-        let raioAtual = raioBase + ondaChamas + modulacaoFrequencia;
-        let x = raioAtual * Math.cos(angulo);
-        let y = raioAtual * Math.sin(angulo);
-
-        if (i === 0) c.moveTo(x, y);
-        else c.lineTo(x, y);
-    }
-    c.closePath();
-    c.stroke();
-
-    // 3. Labaredas Radiais (Efeito de Chama Acústica Dispersa)
-    let numLabaredas = pontasEstrela * 4;
-    for (let i = 0; i < numLabaredas; i++) {
-        let angulo = (i / numLabaredas) * Math.PI * 2 + (tempo * 0.2);
-        let alturaChama = 15 + Math.abs(Math.sin(angulo * pontasEstrela + tempo)) * (30 + audioMod * 12);
-        
-        let x1 = Math.cos(angulo) * raioBase;
-        let y1 = Math.sin(angulo) * raioBase;
-        let x2 = Math.cos(angulo) * (raioBase + alturaChama);
-        let y2 = Math.sin(angulo) * (raioBase + alturaChama);
-
-        c.beginPath();
-        c.moveTo(x1, y1);
-        c.lineTo(x2, y2);
-        c.strokeStyle = 'rgba(56, 189, 248, 0.45)';
-        c.lineWidth = 1.0;
-        c.stroke();
-
-        // Partícula de topo da chama
-        c.beginPath();
-        c.arc(x2, y2, 1.5, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.fill();
-    }
-
-    c.restore();
-}
-
-        function desenharRessonancia39(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-    c.lineWidth = 1.1;
-
-    let tempo = Date.now() * 0.0012;
-    let audioMod = (dataArray[5] || 10) * sens * 0.12;
-    let numAnéisBiologicos = 5;
-
-    // 1. Núcleo Biomecânico Central (Pulsação Orgânica)
-    let raioNucleo = 18 + Math.sin(tempo * 3) * 6 + (audioMod * 4);
-    c.beginPath();
-    c.arc(0, 0, Math.max(4, raioNucleo), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.globalAlpha = 0.4;
-    c.fill();
-    c.globalAlpha = 1.0;
-    c.stroke();
-
-    // 2. Filamentos Neurais / Radiais (Conexões Biomecânicas)
-    let numFilamentos = 12;
-    for (let i = 0; i < numFilamentos; i++) {
-        let angulo = (i / numFilamentos) * Math.PI * 2 + (tempo * 0.2);
-        let comprimentoMax = 110 + (Math.sin(angulo * 3 + tempo) * 20) + (audioMod * 15);
-
-        c.beginPath();
-        c.moveTo(Math.cos(angulo) * raioNucleo, Math.sin(angulo) * raioNucleo);
-        
-        // Curva orgânica (com ponto de controle descentralizado)
-        let cxPt = Math.cos(angulo + 0.5) * (comprimentoMax * 0.6);
-        let cyPt = Math.sin(angulo + 0.5) * (comprimentoMax * 0.6);
-        let fimX = Math.cos(angulo) * comprimentoMax;
-        let fimY = Math.sin(angulo) * comprimentoMax;
-
-        c.quadraticCurveTo(cxPt, cyPt, fimX, fimY);
-        c.strokeStyle = 'rgba(56, 189, 248, 0.45)';
-        c.stroke();
-
-        // Nó sináptico na ponta do filamento
-        c.beginPath();
-        c.arc(fimX, fimY, 2.5, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.fill();
-    }
-
-    // 3. Membranas Celulares Concêntricas (Ondas Biológicas)
-    for (let i = 1; i <= numAnéisBiologicos; i++) {
-        c.beginPath();
-        let raioBase = 40 + (i * 22);
-        let pontos = 80;
-
-        for (let j = 0; j < pontos; j++) {
-            let angulo = (j / pontos) * Math.PI * 2;
-            
-            // Ondulação assimétrica simulando deformação celular viva
-            let deformacaoVIVA = Math.sin(angulo * (i + 2) - tempo * i) * (4 + (freq * 0.0015));
-            let pulsoAudio = Math.cos(j * 2 + tempo * 2) * (audioMod * 0.8);
-            
-            let raioAtual = raioBase + deformacaoVIVA + pulsoAudio;
-            let x = raioAtual * Math.cos(angulo);
-            let y = raioAtual * Math.sin(angulo);
-
-            if (j === 0) c.moveTo(x, y);
-            else c.lineTo(x, y);
-        }
-        c.closePath();
-        c.strokeStyle = i % 2 === 0 ? cor : 'rgba(56, 189, 248, 0.35)';
-        c.lineWidth = i === numAnéisBiologicos ? 1.5 : 0.8;
-        c.stroke();
-    }
-
-    c.restore();
-}
-
-        function desenharRessonancia40(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.lineWidth = 1.0;
-    
-    let numCamadas = 8;
-    let deslocamentoX = Math.sin(Date.now() * 0.002) * (freq * 0.01 * sens);
-    let deslocamentoY = Math.cos(Date.now() * 0.002) * (freq * 0.01 * sens);
-
-    // Desenha malhas sobrepostas para gerar o efeito visual de Moiré
-    for (let k = 0; k < 2; k++) {
-        c.save();
-        if (k === 1) {
-            c.translate(deslocamentoX, deslocamentoY);
-            c.rotate(Math.PI / 12); // Rotação para criar o padrão de interferência
-        }
-
-        for (let i = 0; i < numCamadas; i++) {
+            c.save();
+            let tempo = Date.now() * 0.003 + (freq * 0.0002);
+            let pontas = 6, raio = 85;
+            let energia = dataArray ? dataArray.reduce((a, b) => a + b, 0) / dataArray.length : 20;
+            c.strokeStyle = chkCores.checked ? `hsla(${((freq) % 700) / 700 * 360}, 95%, 65%, 0.9)` : cor;
+            c.lineWidth = 1.6;
+            c.rotate(tempo * 0.4);
             c.beginPath();
-            let raioBase = 40 + (i * 25);
-            let pontos = 100;
-            
-            for (let j = 0; j < pontos; j++) {
-                let angulo = (j / pontos) * Math.PI * 2;
-                let audioMod = (dataArray[j % dataArray.length] || 10) * sens * 0.05;
-                let raio = raioBase + Math.sin(angulo * 6 + (freq * 0.005)) * (10 + audioMod);
-                
-                let x = raio * Math.cos(angulo);
-                let y = raio * Math.sin(angulo);
-                
-                if (j === 0) c.moveTo(x, y);
-                else c.lineTo(x, y);
+            for (let i = 0; i <= 180; i++) {
+                let ang = (i / 180) * Math.PI * 2;
+                let audioMod = (dataArray ? (dataArray[i % dataArray.length] || 0) * 0.3 * sens : 0);
+                let r = raio + Math.sin(pontas * ang - tempo * 3) * (25 + (energia * 0.4 * sens) + audioMod);
+                let x = r * Math.cos(ang), y = r * Math.sin(ang);
+                i === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
             }
-            c.closePath();
-            c.stroke();
+            c.closePath(); c.stroke();
+            c.restore();
         }
-        c.restore();
-    }
-    c.restore();
-}
 
-// 2. Tijelas Tibetanas / Pétalas de Lótus (mantém o visual de cymascope de água refinado)
-function desenharRessonancia41(freq, sens, cor, c) {
-    desenharCymascopeAgua(freq, sens, cor, c);
-}
-        
-        function desenharRessonancia42(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.lineWidth = 1.2;
-
-    let numLinhas = 12;
-    // Fator de modulação baseado na frequência e sensibilidade para simular a vibração da placa
-    let vibracao = (freq * 0.002) * sens;
-
-    for (let i = 0; i < numLinhas; i++) {
-        c.beginPath();
-        let tamanhoBase = 30 + (i * 15);
-        let pontos = 120;
-
-        for (let j = 0; j < pontos; j++) {
-            let angulo = (j / pontos) * Math.PI * 2;
-            
-            // Simula as linhas nodais de Chladni em simetria triangular (3 pontas / lóbulos)
-            let modulacaoTriangular = Math.cos(3 * angulo) * (15 + (vibracao * 10));
-            let audioMod = (dataArray[j % dataArray.length] || 10) * sens * 0.08;
-            
-            let raio = tamanhoBase + modulacaoTriangular + audioMod;
-            
-            let x = raio * Math.cos(angulo);
-            let y = raio * Math.sin(angulo);
-
-            if (j === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
+        function desenharVoronoiOrganicas(freq, energia, sens, cor, c) {
+            c.save();
+            let tempo = Date.now() * 0.0025 + (freq * 0.00015);
+            c.rotate(tempo * 0.3);
+            for (let i = 0; i < 7; i++) {
+                let ang = (i / 7) * Math.PI * 2;
+                let x = Math.cos(ang) * 55, y = Math.sin(ang) * 55;
+                c.strokeStyle = chkCores.checked ? `hsla(${((freq + i * 50) % 700) / 700 * 360}, 90%, 65%, 0.85)` : cor;
+                c.lineWidth = 1.4;
+                c.beginPath(); c.arc(x, y, 38 + Math.sin(tempo * 4 + i) * (12 + energia * 0.2 * sens), 0, Math.PI * 2); c.stroke();
             }
+            c.restore();
         }
-        c.closePath();
-        c.stroke();
-    }
-    c.restore();
-}
 
-        function desenharRessonancia43(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.fillStyle = cor;
-    c.lineWidth = 1.0;
+        // --- LOOP DE EXECUÇÃO PRINCIPAL ---
+        function desenhar() {
+            requestAnimationFrame(desenhar);
+            analyser.getByteFrequencyData(dataArray);
 
-    let numPendulos = 24;
-    let tempo = Date.now() * 0.002;
-    let audioMod = (dataArray[10] || 10) * sens * 0.1;
-    let espacamentoY = 12;
-    let baseY = - (numPendulos * espacamentoY) / 2;
-
-    c.beginPath();
-    // Desenha uma linha de suporte superior
-    c.moveTo(-150, baseY - 10);
-    c.lineTo(150, baseY - 10);
-    c.stroke();
-
-    let pontosCurva = [];
-
-    for (let i = 0; i < numPendulos; i++) {
-        // Frequência de oscilação diferente para cada pêndulo cria o efeito visual de onda viajante
-        let frequenciaPendulo = 0.8 + (i * 0.08) + (freq * 0.0005);
-        let amplitude = 100 + (audioMod * 5);
-        
-        // Posição X calculada por senoide com fases desencontradas
-        let x = Math.sin(tempo * frequenciaPendulo) * amplitude;
-        let y = baseY + (i * espacamentoY);
-
-        pontosCurva.push({ x: x, y: y });
-
-        // Desenha a linha da haste do pêndulo e a esfera na ponta
-        c.beginPath();
-        c.moveTo(0, baseY - 10);
-        c.lineTo(x, y);
-        c.strokeStyle = 'rgba(56, 189, 248, 0.25)';
-        c.stroke();
-
-        c.beginPath();
-        c.arc(x, y, 3, 0, Math.PI * 2);
-        c.fillStyle = cor;
-        c.fill();
-    }
-
-    // Desenha uma curva conectando os pêndulos para evidenciar o padrão de onda
-    c.beginPath();
-    for (let i = 0; i < pontosCurva.length; i++) {
-        let pt = pontosCurva[i];
-        if (i === 0) c.moveTo(pt.x, pt.y);
-        else c.lineTo(pt.x, pt.y);
-    }
-    c.strokeStyle = cor;
-    c.lineWidth = 1.5;
-    c.stroke();
-
-    c.restore();
-}
-
-        function desenharRessonancia44(freq, sens, cor, c) {
-    c.save();
-    c.strokeStyle = cor;
-    c.lineWidth = 1.0;
-
-    let numCamadas = 6;
-    let tempo = Date.now() * 0.0015;
-    let audioMod = (dataArray[20] || 10) * sens * 0.08;
-
-    // Desenha múltiplos meridianos e paralelos deformados para simular uma esfera energética 3D
-    for (let i = 0; i < numCamadas; i++) {
-        c.beginPath();
-        let raioBase = 40 + (i * 18);
-        let pontos = 90;
-
-        for (let j = 0; j < pontos; j++) {
-            let angulo = (j / pontos) * Math.PI * 2;
-            
-            // Deformação senoidal cruzada para simular volume esférico sob alta ressonância
-            let deformacaoZ = Math.sin(angulo * 4 + tempo) * (8 + (freq * 0.003));
-            let modulacaoAudio = Math.cos(j + tempo) * audioMod;
-            
-            let raioAtual = raioBase + deformacaoZ + modulacaoAudio;
-            
-            // Projeção em perspectiva leve para dar aspecto esférico
-            let x = raioAtual * Math.cos(angulo);
-            let y = (raioAtual * 0.75) * Math.sin(angulo) * Math.cos(i * 0.3 + tempo * 0.5);
-
-            if (j === 0) {
-                c.moveTo(x, y);
-            } else {
-                c.lineTo(x, y);
+            const dadosAudio = estimarFrequenciaDominante();
+            if (dadosAudio.freq > 15 && dadosAudio.freq < 8000) {
+                txtFreq.textContent = dadosAudio.freq;
             }
+
+            let sens = Math.min(Math.max(parseFloat(sliderSensibilidade.value), 0.2), 3.0);
+            let tipoPadrao = seletor.value;
+            let corAtual = obterCorDinamica(dadosAudio.freq);
+
+            ctx2D = canvas.getContext('2d', { preserveDrawingBuffer: true });
+            ctx2D.fillStyle = 'rgba(2, 2, 5, 0.22)';
+            ctx2D.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx2D.save();
+            ctx2D.translate(canvas.width / 2, canvas.height / 2);
+
+            switch(tipoPadrao) {
+                case 'ecosfera_biomecanica': desenharEcosferaBiomecanica(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'vibracao_magnetohidrodinamica': desenharVibracaoMagnetohidrodinamica(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'campo_gravitacional_torsao': desenharCampoGravitacionalTorsao(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'oscilacao_cristalina_prateada': desenharOscilacaoCristalinaPrateada(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'harmonica_vazio_quantico': desenharHarmonicaVazioQuantico(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'ressonancia_plasma_estelar': desenharRessonanciaPlasmaEstelar(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'esfera_ressonante': desenharEsferaRessonante(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'chladni_hexagonal': desenharChladniHexagonal(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'vortices_acusticos': desenharVorticesAcusticos(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'rede_cristais_3d': desenharRedeCristais3D(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'efeito_faraday': desenharEfeitoFaraday(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'wave_pendulum': desenharWavePendulum(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'tubo_rubens': desenharTuboRubens(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'cymascope_agua': desenharCymascopeAgua(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'chladni_triangular': desenharChladniTriangular(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'chladni_radial': desenharChladniRadial(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'ondas_gravitacionais': desenharOndasGravitacionais(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'esferas_harmonicas': desenharEsferasHarmonicas(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'espiral_ulam': desenharEspiralUlam(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'atrator_lorenz': desenharAtratorLorenz(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'tubo_kundt': desenharTuboKundt(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'chladni_quadrada': desenharChladniQuadrada(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'ondas_agua': desenharOndasAgua(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'rosetas': desenharRosetas(dadosAudio.freq, sens, corAtual, ctx2D); break;
+                case 'hexagrama': desenharHexagrama(sens, corAtual, ctx2D, dadosAudio.freq, dadosAudio.energia); break;
+                case 'matricial': desenharMatricial(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'espiral': desenharEspiral(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'lissajous': desenharLissajous(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'redes_hexagonais': desenharRedesHexagonais(dadosAudio.freq, sens, corAtual, ctx2D, dadosAudio.energia); break;
+                case 'curvas_rosa': desenharCurvasRosa(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'espiral_aurea': desenharEspiralAurea(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'moire': desenharMoire(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'lissajous_3d': desenharLissajous3D(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'julia': desenharJulia(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'bessel': desenharBessel(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'cymatic_bloom': desenharCymaticBloom(dadosAudio.freq, sens, corAtual, ctx2D); break;
+                case 'quantum_vortex': desenharQuantumVortex(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'dna_helix': desenharDnaHelix(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'cymatic_plasma': desenharCymaticPlasma(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'mandala_sacred': desenharMandalaSacred(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'stellar_pulsar': desenharStellarPulsar(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'crystal_lattice': desenharCrystalLattice(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'harmonic_web': desenharHarmonicWeb(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'bioluminescence': desenharBioluminescence(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'superstring_brane': desenharSuperstringBrane(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'ressonancia_37': desenharNohToroidais(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+                case 'ressonancia_38': desenharRessonancia38(dadosAudio.freq, sens, corAtual, ctx2D); break;
+                case 'ressonancia_39': desenharVoronoiOrganicas(dadosAudio.freq, dadosAudio.energia, sens, corAtual, ctx2D); break;
+            }
+
+            ctx2D.restore();
         }
-        c.closePath();
-        c.stroke();
-    }
-
-    // Núcleo pulsante central da esfera
-    c.beginPath();
-    let raioNucleo = 12 + Math.sin(tempo * 4) * 4 + (audioMod * 0.5);
-    c.arc(0, 0, Math.max(2, raioNucleo), 0, Math.PI * 2);
-    c.fillStyle = cor;
-    c.fill();
-
-    c.restore();
-}
-
     </script>
 </body>
 </html>
